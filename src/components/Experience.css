@@ -1,0 +1,436 @@
+.experience {
+  padding: 6rem 0;
+  background: #000000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.experience-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.section-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  position: relative;
+  letter-spacing: -0.02em;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #cccccc;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+.download-resume-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  color: #000000;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3);
+}
+
+.download-resume-btn:hover {
+  box-shadow: 0 10px 25px rgba(0, 255, 136, 0.5);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #00d4ff 0%, #ff0080 100%);
+}
+
+.experience-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.work-experience,
+.education {
+  background: #111111;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+}
+
+.section-icon {
+  font-size: 1.5rem;
+  color: #00ff88;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.section-header h3 {
+  font-size: 1.8rem;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 700;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -2.5rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
+  border-radius: 50%;
+  border: 3px solid #111111;
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.2), 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+.timeline-content {
+  background: #222222;
+  padding: 2rem;
+  border-radius: 15px;
+  border-left: 4px solid #00ff88;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+.job-header {
+  margin-bottom: 1rem;
+}
+
+.job-title {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.job-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.company {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.period {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.job-location {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.job-type {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.job-description {
+  color: #cccccc;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.achievements {
+  margin-bottom: 1.5rem;
+}
+
+.achievements h5 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.achievements ul {
+  list-style: none;
+  padding: 0;
+}
+
+.achievements li {
+  color: #cccccc;
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+  font-weight: 500;
+}
+
+.achievements li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #00ff88;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.technologies h5 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+.education-item {
+  background: #222222;
+  padding: 2rem;
+  border-radius: 15px;
+  border-left: 4px solid #00ff88;
+  transition: all 0.3s ease;
+}
+
+.education-item:hover {
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.2);
+  transform: translateY(-2px);
+}
+
+.degree {
+  font-size: 1.4rem;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.education-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.school {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.location {
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.gpa {
+  background: rgba(40, 167, 69, 0.1);
+  color: #28a745;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.relevant-courses h5 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.course-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.course-tag {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .experience {
+    padding: 4rem 0;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 1rem;
+  }
+
+  .work-experience,
+  .education {
+    padding: 2rem;
+  }
+
+  .timeline {
+    padding-left: 1.5rem;
+  }
+
+  .timeline::before {
+    left: 0.75rem;
+  }
+
+  .timeline-item {
+    padding-left: 1.5rem;
+  }
+
+  .timeline-marker {
+    left: -2rem;
+  }
+
+  .timeline-content,
+  .education-item {
+    padding: 1.5rem;
+  }
+
+  .job-meta,
+  .education-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .job-location {
+    flex-wrap: wrap;
+  }
+
+  .job-type {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .work-experience,
+  .education {
+    padding: 1.5rem;
+  }
+
+  .timeline-content,
+  .education-item {
+    padding: 1rem;
+  }
+
+  .job-title,
+  .degree {
+    font-size: 1.2rem;
+  }
+
+  .tech-tags,
+  .course-tags {
+    gap: 0.25rem;
+  }
+
+  .tech-tag,
+  .course-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
