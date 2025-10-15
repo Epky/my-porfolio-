@@ -26,23 +26,23 @@ const About = () => {
   const aboutPoints = [
     {
       icon: FaCode,
-      title: "Web Development",
-      description: "Expertise in both frontend and backend technologies"
+      title: "System Analysis",
+      description: "Learning how to understand and evaluate different IT systems and processes"
     },
     {
       icon: FaRocket,
-      title: "Performance Optimization",
-      description: "Creating fast, scalable, and efficient applications"
+      title: "Problem Solving",
+      description: "Practicing how to find issues and come up with simple, effective solutions"
     },
     {
       icon: FaHeart,
-      title: "User Experience",
-      description: "Designing intuitive and engaging user interfaces"
+      title: "User Support",
+      description: "Developing skills in helping users and providing basic technical assistance"
     },
     {
       icon: FaAward,
-      title: "Quality Code",
-      description: "Writing clean, maintainable, and well-documented code"
+      title: "Quality Assurance",
+      description: "Becoming familiar with maintaining good standards and practices in IT-related tasks"
     }
   ];
 
@@ -59,7 +59,7 @@ const About = () => {
           <motion.div className="about-header" variants={itemVariants}>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle">
-              Get to know more about my journey and passion for development
+                 Get to know more about my journey and passion for technology
             </p>
           </motion.div>
 
@@ -69,14 +69,10 @@ const About = () => {
                 <FaUser className="intro-icon" />
                 <h3>My Story</h3>
                 <p>
-                I’m a 4th-year student at the University of Mindanao and an aspiring web developer. 
-                My journey started with curiosity about how websites are built, 
-                and it grew into a passion for creating clean, functional, and user-friendly applications.
-                </p>
-                <p>
-                I focus on learning and applying modern web technologies, working on both 
-                frontend and backend development. My goal is to keep improving my skills and build 
-                applications that provide real value and a great user experience.
+                I am a 4th-year Information Technology student at the University of Mindanao who values continuous 
+                learning and growth in the ever-evolving field of technology.
+                My goal is to gain meaningful experience and broaden my understanding 
+                of IT concepts and real-world applications..
                 </p>
               </div>
 
@@ -84,10 +80,9 @@ const About = () => {
                 <h4>My Values</h4>
                 <ul>
                   <li>Continuous Learning and Growth</li>
-                  <li>Clean, Maintainable Code</li>
-                  <li>User-Centered Design</li>
-                  <li>Collaboration and Teamwork</li>
-                  <li>Innovation and Creativity</li>
+                  <li>Doing things with honesty and effort</li>
+                  <li>Collaborative Teamwork</li>
+                  <li>Open to exploring new tech and ideas</li>
                 </ul>
               </div>
             </motion.div>

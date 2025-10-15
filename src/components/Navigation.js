@@ -20,7 +20,6 @@ const Navigation = () => {
   const navItems = [
     { id: 'home', label: 'Home', icon: FaHome },
     { id: 'about', label: 'About', icon: FaUser },
-    { id: 'skills', label: 'Skills', icon: FaCode },
     { id: 'experience', label: 'Experience', icon: FaBriefcase },
     { id: 'projects', label: 'Projects', icon: FaProjectDiagram },
     { id: 'certifications', label: 'Certifications', icon: FaCertificate },

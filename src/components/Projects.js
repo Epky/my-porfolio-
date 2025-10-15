@@ -42,54 +42,6 @@ const Projects = () => {
       features: ["User Authentication (customer & admin roles)", "Product Listings with Inventory Management", "Sales Tracking & Automated Reports", "Order Management with Delivery Status Updates", "Admin Dashboard with Search & Analytics"],
       stats: { stars: 45, forks: 12, watchers: 23 }
     },
-    {
-      id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, team collaboration features, and project tracking capabilities.",
-      image: "/api/placeholder/400/250",
-      github: "https://github.com/yourusername/task-manager",
-      live: "https://your-task-manager-demo.com",
-      category: "frontend",
-      technologies: ["React", "Redux", "Socket.io", "Material-UI", "Firebase"],
-      features: ["Real-time Updates", "Team Collaboration", "Project Tracking", "Drag & Drop", "Notifications"],
-      stats: { stars: 32, forks: 8, watchers: 15 }
-    },
-    {
-      id: 3,
-      title: "Weather Dashboard",
-      description: "A responsive weather dashboard with location-based forecasts, interactive maps, and detailed weather analytics.",
-      image: "/api/placeholder/400/250",
-      github: "https://github.com/yourusername/weather-dashboard",
-      live: "https://your-weather-demo.com",
-      category: "frontend",
-      technologies: ["Vue.js", "Chart.js", "OpenWeather API", "CSS3", "PWA"],
-      features: ["Location-based Forecast", "Interactive Maps", "Weather Analytics", "PWA Support", "Offline Mode"],
-      stats: { stars: 28, forks: 6, watchers: 18 }
-    },
-    {
-      id: 4,
-      title: "REST API Service",
-      description: "A robust REST API service with authentication, rate limiting, and comprehensive documentation. Built for scalability and security.",
-      image: "/api/placeholder/400/250",
-      github: "https://github.com/yourusername/rest-api-service",
-      live: "https://your-api-docs.com",
-      category: "backend",
-      technologies: ["Node.js", "Express", "PostgreSQL", "JWT", "Swagger"],
-      features: ["Authentication", "Rate Limiting", "API Documentation", "Error Handling", "Logging"],
-      stats: { stars: 38, forks: 15, watchers: 22 }
-    },
-    {
-      id: 5,
-      title: "Data Analytics Dashboard",
-      description: "An interactive data analytics dashboard with real-time data visualization, custom reports, and export capabilities.",
-      image: "/api/placeholder/400/250",
-      github: "https://github.com/yourusername/analytics-dashboard",
-      live: "https://your-analytics-demo.com",
-      category: "fullstack",
-      technologies: ["React", "D3.js", "Python", "FastAPI", "PostgreSQL"],
-      features: ["Real-time Visualization", "Custom Reports", "Data Export", "Interactive Charts", "User Management"],
-      stats: { stars: 41, forks: 11, watchers: 28 }
-    }
   ];
 
   const categories = [
@@ -133,7 +85,7 @@ const Projects = () => {
           viewport={{ once: true }}
         >
           <motion.div className="projects-header" variants={itemVariants}>
-            <h2 className="section-title">Featured Projects</h2>
+            <h2 className="section-title"> My Projects</h2>
             <p className="section-subtitle">
               A showcase of my recent work and GitHub repositories
             </p>

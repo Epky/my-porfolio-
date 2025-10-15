@@ -91,6 +91,20 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  justify-items: center;
+}
+
+/* When there's only one project, center it and limit its width */
+.projects-grid:has(.project-card:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Fallback for browsers that don't support :has() */
+.projects-grid .project-card:only-child {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .project-card {
@@ -368,6 +382,16 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    max-width: none;
+  }
+
+  /* Ensure single project is properly centered on mobile */
+  .projects-grid:has(.project-card:only-child) {
+    max-width: none;
+  }
+
+  .projects-grid .project-card:only-child {
+    max-width: none;
   }
 
   .project-content {

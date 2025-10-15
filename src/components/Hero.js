@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaFacebook, FaEnvelope, FaDownload, FaCode, FaLaptopCode } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFacebook, FaEnvelope, FaDownload, FaServer, FaNetworkWired, FaInstagram } from 'react-icons/fa';
 import './Hero.css';
 import './SocialIcons.css';
 
@@ -28,7 +28,7 @@ const Hero = () => {
     { icon: FaGithub, url: 'https://github.com/Epky', label: 'GitHub' },
     { icon: FaLinkedin, url: 'https://www.linkedin.com/in/edsel-payan-67452b255/', label: 'LinkedIn' },
     { icon: FaFacebook, url: 'https://www.facebook.com/edselpayan', label: 'Facebook' },
-    { icon: FaEnvelope, url: 'https://mail.google.com/mail/u/2/#inbox', label: 'gmail' }
+    { icon: FaInstagram, url: 'https://instagram.com/edselpayan', label: 'Instagram' }
   ];
 
   return (
@@ -85,11 +85,11 @@ const Hero = () => {
             <motion.h1 className="hero-title">
               <span className="greeting">Hello, I'm</span>
               <span className="name">Edsel Suralta Payan</span>
-              <span className="title">Web Developer</span>
+              <span className="title">4th-year student</span>
             </motion.h1>
             
             <motion.p className="hero-description" variants={itemVariants}>
-              "I'm a web developer who builds user-friendly and responsive websites to help people and businesses online."
+              "I’m an IT student focused on building my knowledge and gaining experience in various aspects of the Information Technology field."
             </motion.p>
 
             <motion.div className="hero-buttons" variants={itemVariants}>
@@ -128,7 +128,7 @@ const Hero = () => {
             <div className="profile-image">
                 <img 
                   src="/images/profile/sel.jpg" 
-                  alt="Edsel Suralta Payan - Web Developer"
+                  alt="Edsel Suralta Payan - IT Student"
                   className="profile-photo"
                   onError={(e) => {
                     e.target.src = '/images/profile/profile-placeholder.svg';
@@ -149,7 +149,7 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               >
-                <FaLaptopCode />
+                <FaServer />
               </motion.div>
               <motion.div
                 className="floating-element element-2"
@@ -163,7 +163,7 @@ const Hero = () => {
                   ease: "easeInOut"
                 }}
               >
-                <FaCode />
+                <FaNetworkWired />
               </motion.div>
             </div>
           </div>

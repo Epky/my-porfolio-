@@ -64,6 +64,8 @@
   position: relative;
   z-index: 2;
   min-height: calc(100vh - 80px);
+  padding-top: 1rem;
+  margin-top: -4rem;
 }
 
 .hero-content {
@@ -294,7 +296,7 @@
 .hero .social-links {
   position: fixed;
   left: 1.5rem;
-  top: 50%;
+  top: 45%;
   transform: translateY(-50%);
   z-index: 1000;
 }
@@ -311,6 +313,8 @@
     text-align: center;
     padding: 0 1rem;
     min-height: calc(100vh - 70px);
+    padding-top: 0.5rem;
+    margin-top: -3rem;
   }
 
   .hero-image {

@@ -41,8 +41,8 @@ const Contact = () => {
     {
       icon: FaEnvelope,
       title: "Email",
-      value: "hadogchess@gmail.com",
-      link: "mailto:hadogchess@gmail.com",
+      value: "payanedsel26@gmail.com",
+      link: "mailto:payanedsel26@gmail.com",
       description: "Send me an email anytime"
     },
     {
@@ -63,16 +63,16 @@ const Contact = () => {
 
   const socialLinks = [
     {
-      icon: FaLinkedin,
-      name: "LinkedIn",
-      url: "https://www.linkedin.com/in/edsel-payan-67452b255/",
-      color: "#0077b5"
-    },
-    {
       icon: FaGithub,
       name: "GitHub",
       url: "https://github.com/Epky",
       color: "#333"
+    },
+    {
+      icon: FaLinkedin,
+      name: "LinkedIn",
+      url: "https://linkedin.com/in/yourusername",
+      color: "#0077b5"
     },
     {
       icon: FaFacebook,
@@ -83,20 +83,8 @@ const Contact = () => {
     {
       icon: FaInstagram,
       name: "Instagram",
-      url: "https://instagram.com/yourusername",
+      url: "https://instagram.com/edselpayan",
       color: "#e4405f"
-    },
-    {
-      icon: FaTelegram,
-      name: "Telegram",
-      url: "https://t.me/yourusername",
-      color: "#0088cc"
-    },
-    {
-      icon: FaWhatsapp,
-      name: "WhatsApp",
-      url: "https://web.whatsapp.com/09913615463",
-      color: "#25d366"
     }
   ];
 
@@ -114,9 +102,9 @@ const Contact = () => {
 
     try {
       // Check if EmailJS is properly configured
-      const serviceId = 'service_ywyh5uw';
-      const templateId = 'template_gtmglow';
-      const publicKey = '_cYX5LQVMj9kHZhkt';
+      const serviceId = 'service_s8kl1jl';
+      const templateId = 'template_s849pg9';
+      const publicKey = '1Qm658Y6WNoSRgqa7';
 
       // EmailJS is now properly configured, proceed with sending
 
@@ -126,7 +114,7 @@ const Contact = () => {
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
-        to_email: 'hadogchess@gmail.com',
+        to_email: 'payanedsel26@gmail.com',
         reply_to: formData.email,
         sender_name: formData.name,
         sender_email: formData.email
@@ -144,7 +132,7 @@ const Contact = () => {
       console.error('EmailJS Error:', error);
       
       // Fallback to mailto if EmailJS fails
-      const mailtoLink = `mailto:hadogchess@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+      const mailtoLink = `mailto:payanedsel26@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       
@@ -210,8 +198,8 @@ const Contact = () => {
               </div>
 
               <div className="social-section">
-                <h4>Follow Me</h4>
-                <div className="social-links grid">
+                <h4>Connect With Me</h4>
+                <div className="social-links horizontal">
                   {socialLinks.map((social, index) => (
                     <motion.a
                       key={index}
@@ -219,18 +207,21 @@ const Contact = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="social-link contact"
-                      style={{ '--social-color': social.color }}
-                      whileHover={{ scale: 1.05 }}
+                      aria-label={social.name}
+                      whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                       initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
                     >
                       <social.icon />
-                      <span className="social-name">{social.name}</span>
                     </motion.a>
                   ))}
                 </div>
+                <p className="social-text">
+                  Connect with me on social media
+                </p>
               </div>
             </motion.div>
 

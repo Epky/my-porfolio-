@@ -188,9 +188,6 @@ const Certifications = () => {
         >
           <motion.div className="certifications-header" variants={itemVariants}>
             <h2 className="section-title">Certifications & Achievements</h2>
-            <p className="section-subtitle">
-              Professional certifications and recognition for my expertise
-            </p>
           </motion.div>
 
           <div className="certifications-grid">
