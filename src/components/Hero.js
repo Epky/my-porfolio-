@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaFacebook, FaEnvelope, FaDownload, FaServer, FaNetworkWired, FaInstagram } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaFacebook, FaEnvelope, FaEye, FaServer, FaNetworkWired, FaInstagram } from 'react-icons/fa';
 import './Hero.css';
 import './SocialIcons.css';
 
@@ -104,14 +104,15 @@ const Hero = () => {
               </motion.a>
               
               <motion.a
-                href="/images/resume/Edsel.pdf"
+                href="https://epky.github.io/resume/"
                 className="btn btn-secondary"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <FaDownload />
-                Download Resume
+                <FaEye />
+                View Resume
               </motion.a>
             </motion.div>
 

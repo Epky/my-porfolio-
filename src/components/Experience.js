@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt, FaExternalLinkAlt, FaDownload } from 'react-icons/fa';
+import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt, FaExternalLinkAlt, FaEye } from 'react-icons/fa';
 import './Experience.css';
 
 const Experience = () => {
@@ -87,14 +87,15 @@ const Experience = () => {
               My learning experiences, workshops, and academic background
             </p>
             <motion.a
-              href="/images/resume/Edsel.pdf"
+              href="https://epky.github.io/resume/"
               className="download-resume-btn"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <FaDownload />
-              Download Resume
+              <FaEye />
+              View Resume
             </motion.a>
           </motion.div>
 
