@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaFacebook, FaEnvelope, FaEye, FaServer, FaNetworkWired, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaEye, FaServer, FaNetworkWired } from 'react-icons/fa';
 import './Hero.css';
 import './SocialIcons.css';
 
@@ -24,12 +24,7 @@ const Hero = () => {
     }
   };
 
-  const socialLinks = [
-    { icon: FaGithub, url: 'https://github.com/Epky', label: 'GitHub' },
-    { icon: FaLinkedin, url: 'https://www.linkedin.com/in/edsel-payan-67452b255/', label: 'LinkedIn' },
-    { icon: FaFacebook, url: 'https://www.facebook.com/edselpayan', label: 'Facebook' },
-    { icon: FaInstagram, url: 'https://instagram.com/edselpayan', label: 'Instagram' }
-  ];
+
 
   return (
     <section id="home" className="hero">
@@ -170,29 +165,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <motion.div
-          className="social-links vertical"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1 }}
-        >
-          {socialLinks.map((social, index) => (
-            <motion.a
-              key={index}
-              href={social.url}
-              className="social-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 + index * 0.1 }}
-            >
-              <social.icon />
-            </motion.a>
-          ))}
-        </motion.div>
+
       </div>
     </section>
   );

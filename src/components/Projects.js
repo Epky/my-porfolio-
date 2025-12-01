@@ -57,11 +57,8 @@ const Projects = () => {
         "Order Management with Delivery Status Updates",
         "Admin Dashboard with Search & Analytics",
       ],
-      stats: { stars: 45, forks: 12, watchers: 23 },
     },
   ];
-
-  
 
   const categories = [
     { id: "all", label: "All Projects", icon: FaCode },
@@ -193,20 +190,6 @@ const Projects = () => {
                   <div className="project-content">
                     <div className="project-header">
                       <h3 className="project-title">{project.title}</h3>
-                      <div className="project-stats">
-                        <span className="stat">
-                          <FaStar />
-                          {project.stats.stars}
-                        </span>
-                        <span className="stat">
-                          <FaGitAlt />
-                          {project.stats.forks}
-                        </span>
-                        <span className="stat">
-                          <FaEye />
-                          {project.stats.watchers}
-                        </span>
-                      </div>
                     </div>
 
                     <p className="project-description">{project.description}</p>
