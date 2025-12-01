@@ -61,6 +61,8 @@ const Projects = () => {
     },
   ];
 
+  
+
   const categories = [
     { id: "all", label: "All Projects", icon: FaCode },
     { id: "frontend", label: "Frontend", icon: FaReact },
