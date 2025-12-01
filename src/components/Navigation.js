@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaBars, FaTimes, FaHome, FaUser, FaCode, FaBriefcase, FaProjectDiagram, FaCertificate, FaEnvelope } from 'react-icons/fa';
+import { FaBars, FaTimes, FaHome, FaUser, FaBriefcase, FaProjectDiagram, FaCertificate, FaEnvelope } from 'react-icons/fa';
 import './Navigation.css';
 
 const Navigation = () => {

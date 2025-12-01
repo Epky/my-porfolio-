@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaGithub, FaExternalLinkAlt, FaCode, FaStar, FaEye, 
-  FaGitAlt, FaReact, FaNodeJs, FaJs, FaPython, FaDatabase,
-  FaCloud, FaTools
-} from 'react-icons/fa';
-import './Projects.css';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaGithub,
+  FaExternalLinkAlt,
+  FaCode,
+  FaStar,
+  FaEye,
+  FaGitAlt,
+  FaReact,
+  FaNodeJs,
+  FaJs,
+  FaPython,
+  FaDatabase,
+  FaCloud,
+  FaTools,
+} from "react-icons/fa";
+import "./Projects.css";
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
+  const [activeFilter, setActiveFilter] = useState("all");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -16,63 +26,71 @@ const Projects = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   const projects = [
     {
       id: 1,
       title: "🛒 G.A. Ruiz Enterprise Business Hub",
-      description: "A web-based e-commerce and business management platform designed to streamline sales and operations for G.A. Ruiz Enterprise. The system provides an online shop, real-time inventory management, sales analytics, and a customer dashboard. Built with PHP and MySQL for backend logic, combined with Bootstrap for responsive UI design.",
+      description:
+        "A web-based e-commerce and business management platform designed to streamline sales and operations for G.A. Ruiz Enterprise. The system provides an online shop, real-time inventory management, sales analytics, and a customer dashboard. Built with PHP and MySQL for backend logic, combined with Bootstrap for responsive UI design.",
       image: "/images/project/GA-Ruez.png",
       github: "https://github.com/Epky/GA-system",
       live: "https://ga-ruiz-enterprise-demo.com",
       category: "fullstack",
       technologies: ["PHP", "MySQL", "Bootstrap", "HTML", "CSS", "JavaScript"],
-      features: ["User Authentication (customer & admin roles)", "Product Listings with Inventory Management", "Sales Tracking & Automated Reports", "Order Management with Delivery Status Updates", "Admin Dashboard with Search & Analytics"],
-      stats: { stars: 45, forks: 12, watchers: 23 }
+      features: [
+        "User Authentication (customer & admin roles)",
+        "Product Listings with Inventory Management",
+        "Sales Tracking & Automated Reports",
+        "Order Management with Delivery Status Updates",
+        "Admin Dashboard with Search & Analytics",
+      ],
+      stats: { stars: 45, forks: 12, watchers: 23 },
     },
   ];
 
   const categories = [
-    { id: 'all', label: 'All Projects', icon: FaCode },
-    { id: 'frontend', label: 'Frontend', icon: FaReact },
-    { id: 'backend', label: 'Backend', icon: FaNodeJs },
-    { id: 'fullstack', label: 'Full Stack', icon: FaTools }
+    { id: "all", label: "All Projects", icon: FaCode },
+    { id: "frontend", label: "Frontend", icon: FaReact },
+    { id: "backend", label: "Backend", icon: FaNodeJs },
+    { id: "fullstack", label: "Full Stack", icon: FaTools },
   ];
 
   const getTechIcon = (tech) => {
     const iconMap = {
-      'React': FaReact,
-      'Node.js': FaNodeJs,
-      'JavaScript': FaJs,
-      'Python': FaPython,
-      'MongoDB': FaDatabase,
-      'PostgreSQL': FaDatabase,
-      'MySQL': FaDatabase,
-      'PHP': FaCode,
-      'HTML': FaCode,
-      'CSS': FaCode,
-      'Bootstrap': FaCode,
-      'Firebase': FaCloud,
-      'AWS': FaCloud
+      React: FaReact,
+      "Node.js": FaNodeJs,
+      JavaScript: FaJs,
+      Python: FaPython,
+      MongoDB: FaDatabase,
+      PostgreSQL: FaDatabase,
+      MySQL: FaDatabase,
+      PHP: FaCode,
+      HTML: FaCode,
+      CSS: FaCode,
+      Bootstrap: FaCode,
+      Firebase: FaCloud,
+      AWS: FaCloud,
     };
     return iconMap[tech] || FaCode;
   };
 
-  const filteredProjects = activeFilter === 'all' 
-    ? projects 
-    : projects.filter(project => project.category === activeFilter);
+  const filteredProjects =
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.category === activeFilter);
 
   return (
     <section id="projects" className="projects">
@@ -95,7 +113,9 @@ const Projects = () => {
             {categories.map((category) => (
               <motion.button
                 key={category.id}
-                className={`filter-btn ${activeFilter === category.id ? 'active' : ''}`}
+                className={`filter-btn ${
+                  activeFilter === category.id ? "active" : ""
+                }`}
                 onClick={() => setActiveFilter(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -120,18 +140,28 @@ const Projects = () => {
                   whileHover={{ y: -10 }}
                 >
                   <div className="project-image">
-                    {project.image && project.image !== "/api/placeholder/400/250" ? (
-                      <img 
-                        src={project.image} 
+                    {project.image &&
+                    project.image !== "/api/placeholder/400/250" ? (
+                      <img
+                        src={project.image}
                         alt={project.title}
                         className="project-img"
                         onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.nextSibling.style.display = 'flex';
+                          e.target.style.display = "none";
+                          e.target.nextSibling.style.display = "flex";
                         }}
                       />
                     ) : null}
-                    <div className="image-placeholder" style={{ display: project.image && project.image !== "/api/placeholder/400/250" ? 'none' : 'flex' }}>
+                    <div
+                      className="image-placeholder"
+                      style={{
+                        display:
+                          project.image &&
+                          project.image !== "/api/placeholder/400/250"
+                            ? "none"
+                            : "flex",
+                      }}
+                    >
                       <FaCode className="placeholder-icon" />
                     </div>
                     <div className="project-overlay">
@@ -211,7 +241,10 @@ const Projects = () => {
           <motion.div className="github-cta" variants={itemVariants}>
             <div className="cta-content">
               <h3>Want to see more projects?</h3>
-              <p>Check out my GitHub profile for more repositories and contributions</p>
+              <p>
+                Check out my GitHub profile for more repositories and
+                contributions
+              </p>
               <motion.a
                 href="https://github.com/Epky"
                 target="_blank"

@@ -1,7 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaUser, FaCode, FaRocket, FaHeart, FaGraduationCap, FaAward } from 'react-icons/fa';
-import './About.css';
+import { motion } from "framer-motion";
+import { FaUser, FaCode, FaRocket, FaHeart, FaAward } from "react-icons/fa";
+import "./About.css";
 
 const About = () => {
   const containerVariants = {
@@ -10,40 +9,44 @@ const About = () => {
       opacity: 1,
       transition: {
         delayChildren: 0.3,
-        staggerChildren: 0.2
-      }
-    }
+        staggerChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   const aboutPoints = [
     {
       icon: FaCode,
       title: "System Analysis",
-      description: "Learning how to understand and evaluate different IT systems and processes"
+      description:
+        "Learning how to understand and evaluate different IT systems and processes",
     },
     {
       icon: FaRocket,
       title: "Problem Solving",
-      description: "Practicing how to find issues and come up with simple, effective solutions"
+      description:
+        "Practicing how to find issues and come up with simple, effective solutions",
     },
     {
       icon: FaHeart,
       title: "User Support",
-      description: "Developing skills in helping users and providing basic technical assistance"
+      description:
+        "Developing skills in helping users and providing basic technical assistance",
     },
     {
       icon: FaAward,
       title: "Quality Assurance",
-      description: "Becoming familiar with maintaining good standards and practices in IT-related tasks"
-    }
+      description:
+        "Becoming familiar with maintaining good standards and practices in IT-related tasks",
+    },
   ];
 
   return (
@@ -59,7 +62,7 @@ const About = () => {
           <motion.div className="about-header" variants={itemVariants}>
             <h2 className="section-title">About Me</h2>
             <p className="section-subtitle">
-                 Get to know more about my journey and passion for technology
+              Get to know more about my journey and passion for technology
             </p>
           </motion.div>
 
@@ -69,10 +72,11 @@ const About = () => {
                 <FaUser className="intro-icon" />
                 <h3>My Story</h3>
                 <p>
-                I am a 4th-year Information Technology student at the University of Mindanao who values continuous 
-                learning and growth in the ever-evolving field of technology.
-                My goal is to gain meaningful experience and broaden my understanding 
-                of IT concepts and real-world applications..
+                  I am a 4th-year Information Technology student at the
+                  University of Mindanao who values continuous learning and
+                  growth in the ever-evolving field of technology. My goal is to
+                  gain meaningful experience and broaden my understanding of IT
+                  concepts and real-world applications..
                 </p>
               </div>
 

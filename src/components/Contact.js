@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, 
-  FaFacebook, FaInstagram, FaTelegram, FaWhatsapp, FaPaperPlane,
+  FaFacebook, FaInstagram, FaPaperPlane,
   FaUser, FaComment, FaCheckCircle, FaExclamationCircle
 } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  FaCertificate, FaGraduationCap, FaExternalLinkAlt, 
   FaCalendarAlt, FaCheckCircle, FaDownload, FaEye, FaMedal, FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
 import './Certifications.css';
@@ -100,30 +99,6 @@ const Certifications = () => {
       verificationUrl: "https://tesda.gov.ph",
       certificateUrl: "/images/certifications/Maintaining Computer Systems and Networks.pdf",
       badge: "/images/certifications/Maintaining Computer Systems and Networks.pdf"
-    },
-    {
-      id: 7,
-      title: "SMAW (Shielded Metal Arc Welding) NC II",
-      issuer: "Technical Education and Skills Development Authority",
-      date: "2023",
-      credentialId: "TESDA-SMAW-2023-007",
-      description: "National Certificate Level II in Shielded Metal Arc Welding, demonstrating proficiency in welding techniques and safety procedures.",
-      skills: ["Welding", "Metal Fabrication", "Safety Procedures", "Quality Control", "Equipment Operation"],
-      verificationUrl: "https://tesda.gov.ph",
-      certificateUrl: "/images/certifications/smaw-ncll.jpg",
-      badge: "/images/certifications/smaw-ncll.jpg"
-    },
-    {
-      id: 8,
-      title: "Driving NC II",
-      issuer: "Technical Education and Skills Development Authority",
-      date: "2023",
-      credentialId: "TESDA-DRIVING-2023-008",
-      description: "National Certificate Level II in Driving, certifying competency in professional driving skills and road safety.",
-      skills: ["Professional Driving", "Road Safety", "Vehicle Maintenance", "Traffic Rules", "Customer Service"],
-      verificationUrl: "https://tesda.gov.ph",
-      certificateUrl: "/images/certifications/driving-ncll.jpg",
-      badge: "/images/certifications/driving-ncll.jpg"
     },
     {
       id: 9,
