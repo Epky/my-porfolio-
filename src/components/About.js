@@ -72,11 +72,13 @@ const About = () => {
                 <FaUser className="intro-icon" />
                 <h3>My Story</h3>
                 <p>
-                  I am a 4th-year Information Technology student at the
-                  University of Mindanao who values continuous learning and
-                  growth in the ever-evolving field of technology. My goal is to
-                  gain meaningful experience and broaden my understanding of IT
-                  concepts and real-world applications..
+                  I am an Information Technology graduate with a strong interest
+                  in technology and how it can be applied in real situations. I
+                  aim to use my technical skills in a professional setting and
+                  work effectively as part of a team. My academic background has
+                  given me a solid foundation in IT, and I continue to improve
+                  my knowledge and skills to become more capable and versatile
+                  in the field.
                 </p>
               </div>
 
