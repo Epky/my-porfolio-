@@ -45,7 +45,7 @@ const Projects = () => {
       title: "🛒 G.A. Ruiz Enterprise Business Hub",
       description:
         "A comprehensive web-based e-commerce and business management platform designed to streamline beauty product retail operations for G.A. Ruiz Enterprise.",
-      image: "/images/project/GA.png",
+      image: "/images/project/ga-landingpage.png",
       github: "https://github.com/Epky/GA-system",
       live: "https://ga-ruiz-enterprise-demo.com",
       category: "fullstack",
@@ -62,6 +62,30 @@ const Projects = () => {
         "Customer Portal - Product browsing, cart management, order tracking",
         "Staff Dashboard - Product & inventory management, walk-in transactions, low stock alerts",
         "Admin Analytics - Comprehensive business intelligence, user management, system oversight",
+      ],
+    },
+    {
+      id: 2,
+      title: "🏠 RentMate",
+      description:
+        "A comprehensive rental management system designed to streamline property rental operations. Features tenant management, payment tracking, and property maintenance scheduling.",
+      image: "/images/project/Rentmate.png",
+      github: "https://github.com/Epky/rentmate",
+      live: "https://rentmate-demo.com",
+      category: "fullstack",
+      technologies: [
+        "PHP",
+        "MySQL",
+        "Bootstrap",
+        "JavaScript",
+        "Tailwind",
+        "HTML",
+        "CSS",
+      ],
+      features: [
+        "Tenant Management - Registration, profile management, lease tracking",
+        "Payment System - Rent collection, payment history, automated reminders",
+        "Property Management - Unit listings, maintenance requests, occupancy tracking",
       ],
     },
   ];
