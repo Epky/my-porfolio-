@@ -147,6 +147,18 @@ const Certifications = () => {
       verificationUrl: "https://dict.gov.ph",
       certificateUrl: "/images/certifications/certificate4.png",
       badge: "/images/certifications/certificate4.png"
+    },
+    {
+      id: 13,
+      title: "HTML and CSS",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2024",
+      credentialId: "TESDA-HTMLCSS-2024-013",
+      description: "Comprehensive certification covering HTML structure and CSS styling for web development.",
+      skills: ["HTML", "CSS", "Web Development", "Frontend", "Responsive Design"],
+      verificationUrl: "https://tesda.gov.ph",
+      certificateUrl: "/images/certifications/HTML and CSS.pdf",
+      badge: "/images/certifications/HTML and CSS.pdf"
     }
   ];
 
