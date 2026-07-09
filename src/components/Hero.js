@@ -82,8 +82,9 @@ const Hero = () => {
             </motion.h1>
 
             <motion.p className="hero-description" variants={itemVariants}>
-              "I’m an IT student interested in learning, exploring, and
-              developing my skills across various areas of the IT field."
+              I'm an aspiring IT professional eager to apply my knowledge,
+              expand my technical skills, and contribute to meaningful projects while continuously learning
+              and growing in the IT industry.
             </motion.p>
 
             <motion.div className="hero-buttons" variants={itemVariants}>
