@@ -11,6 +11,7 @@ import {
   FaDatabase,
   FaCloud,
   FaTools,
+  FaDocker,
 } from "react-icons/fa";
 import "./Projects.css";
 
@@ -85,6 +86,34 @@ const Projects = () => {
         "Property Management - Unit listings, maintenance requests, occupancy tracking",
       ],
     },
+    {
+      id: 3,
+      title: "\uD83C\uDF34 PabNor's Beach Resort Management System",
+      description:
+        "A comprehensive beach resort booking management system designed to streamline reservations and daily operations. Features online booking, real-time payment verification, and staff analytics dashboards.",
+      image: "/images/project/pabnor's.png",
+      github: "https://github.com/Epky/pabnors-resort",
+      live: "https://pabnors-resort-demo.com",
+      category: "fullstack",
+      technologies: [
+        "React",
+        "JavaScript",
+        "Tailwind CSS",
+        "FastAPI",
+        "Python",
+        "PostgreSQL",
+        "Docker Compose",
+      ],
+      features: [
+        "Booking System",
+        "Real-Time Notifications",
+        "Payment Verification",
+        "Unit Management",
+        "Staff Dashboard",
+        "Financial Reports",
+        "User Roles",
+      ],
+    },
   ];
 
   const categories = [
@@ -109,6 +138,10 @@ const Projects = () => {
       Bootstrap: FaCode,
       Firebase: FaCloud,
       AWS: FaCloud,
+      "Tailwind CSS": FaCode,
+      "Tailwind": FaCode,
+      FastAPI: FaPython,
+      "Docker Compose": FaDocker,
     };
     return iconMap[tech] || FaCode;
   };
