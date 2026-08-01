@@ -90,7 +90,7 @@ const Projects = () => {
       id: 3,
       title: "\uD83C\uDF34 PabNor's Beach Resort Management System",
       description:
-        "A comprehensive beach resort booking management system designed to streamline reservations and daily operations. Features online booking, real-time payment verification, and staff analytics dashboards.",
+        "A beach resort management system featuring online booking, payment verification, staff analytics, and an AI-powered customer support chatbot.",
       image: "/images/project/pabnor's.png",
       github: "https://github.com/Epky/pabnors-resort",
       live: "https://pabnors-resort-demo.com",
@@ -108,10 +108,7 @@ const Projects = () => {
         "Booking System",
         "Real-Time Notifications",
         "Payment Verification",
-        "Unit Management",
-        "Staff Dashboard",
-        "Financial Reports",
-        "User Roles",
+        "AI Chatbot"
       ],
     },
   ];
@@ -172,9 +169,8 @@ const Projects = () => {
             {categories.map((category) => (
               <motion.button
                 key={category.id}
-                className={`filter-btn ${
-                  activeFilter === category.id ? "active" : ""
-                }`}
+                className={`filter-btn ${activeFilter === category.id ? "active" : ""
+                  }`}
                 onClick={() => setActiveFilter(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -200,7 +196,7 @@ const Projects = () => {
                 >
                   <div className="project-image">
                     {project.image &&
-                    project.image !== "/api/placeholder/400/250" ? (
+                      project.image !== "/api/placeholder/400/250" ? (
                       <img
                         src={project.image}
                         alt={project.title}
@@ -216,7 +212,7 @@ const Projects = () => {
                       style={{
                         display:
                           project.image &&
-                          project.image !== "/api/placeholder/400/250"
+                            project.image !== "/api/placeholder/400/250"
                             ? "none"
                             : "flex",
                       }}
@@ -257,7 +253,7 @@ const Projects = () => {
                     <div className="project-features">
                       <h4>Key Features:</h4>
                       <ul>
-                        {project.features.slice(0, 3).map((feature, index) => (
+                        {project.features.map((feature, index) => (
                           <li key={index}>{feature}</li>
                         ))}
                       </ul>
