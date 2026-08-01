@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, 
+import {
+  FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub,
   FaFacebook, FaInstagram, FaPaperPlane,
   FaUser, FaComment, FaCheckCircle, FaExclamationCircle
 } from 'react-icons/fa';
@@ -71,7 +71,7 @@ const Contact = () => {
     {
       icon: FaLinkedin,
       name: "LinkedIn",
-      url: "https://linkedin.com/in/yourusername",
+      url: "https://www.linkedin.com/in/edsel-payan-67452b255/",
       color: "#0077b5"
     },
     {
@@ -83,7 +83,7 @@ const Contact = () => {
     {
       icon: FaInstagram,
       name: "Instagram",
-      url: "https://instagram.com/edselpayan",
+      url: "https://www.instagram.com/_edsyntax/",
       color: "#e4405f"
     }
   ];
@@ -122,25 +122,25 @@ const Contact = () => {
 
       // Send email using EmailJS
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
-      
+
       setFormStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
+
       // Reset status after 3 seconds
       setTimeout(() => setFormStatus('idle'), 3000);
     } catch (error) {
       console.error('EmailJS Error:', error);
-      
+
       // Fallback to mailto if EmailJS fails
       const mailtoLink = `mailto:payanedsel26@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
         `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
-      
+
       window.location.href = mailtoLink;
-      
+
       setFormStatus('success');
       setFormData({ name: '', email: '', subject: '', message: '' });
-      
+
       // Reset status after 3 seconds
       setTimeout(() => setFormStatus('idle'), 3000);
     }
@@ -168,8 +168,8 @@ const Contact = () => {
               <div className="info-header">
                 <h3>Let's Connect</h3>
                 <p>
-                  I'm always interested in new opportunities and exciting projects. 
-                  Whether you have a question or just want to say hi, I'll try my 
+                  I'm always interested in new opportunities and exciting projects.
+                  Whether you have a question or just want to say hi, I'll try my
                   best to get back to you!
                 </p>
               </div>
