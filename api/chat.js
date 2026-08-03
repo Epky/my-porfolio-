@@ -174,7 +174,7 @@ export default async function handler(req, res) {
   const model = process.env.NARAROUTER_MODEL || "agnes-2.5-flash";
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 7000);
+  const timeout = setTimeout(() => controller.abort(), 12000);
 
   try {
     const upstream = await fetch(`${baseUrl}/chat/completions`, {

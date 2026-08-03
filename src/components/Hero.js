@@ -125,6 +125,8 @@ const Hero = () => {
                 src="/images/profile/payan-toga-optimized.jpeg"
                 alt="Edsel Suralta Payan - IT Student"
                 className="profile-photo"
+                width="280"
+                height="280"
                 onError={(e) => {
                   e.target.src = "/images/profile/profile-placeholder.svg";
                   e.target.onerror = null;

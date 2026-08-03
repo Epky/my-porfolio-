@@ -25,7 +25,7 @@ const Chatbot = () => {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [messages, isTyping, isOpen]);
 
   const sendMessage = async (text) => {
@@ -81,8 +81,36 @@ const Chatbot = () => {
 
   return (
     <>
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.div
+            className="chatbot-hint"
+            initial={{ opacity: 0, x: 15 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 10 }}
+            transition={{ delay: 1.5, duration: 0.4, type: "spring", stiffness: 100 }}
+          >
+            <div className="hint-text">Ask me about Edsel!</div>
+            <svg
+              className="hint-arrow"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <motion.button
-        className="chatbot-toggle"
+        className={`chatbot-toggle ${isOpen ? "chatbot-toggle-open" : ""}`}
         onClick={() => setIsOpen(!isOpen)}
         aria-label={isOpen ? "Close chat" : "Open chat"}
         whileHover={{ scale: 1.05 }}
@@ -119,6 +147,14 @@ const Chatbot = () => {
                   Online
                 </span>
               </div>
+              <button
+                type="button"
+                className="chatbot-close"
+                onClick={() => setIsOpen(false)}
+                aria-label="Close chat"
+              >
+                <FaTimes />
+              </button>
             </div>
 
             <div className="chatbot-messages">
@@ -176,6 +212,7 @@ const Chatbot = () => {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
                 rows="1"
+                maxLength={500}
                 aria-label="Type your message"
               />
               <button

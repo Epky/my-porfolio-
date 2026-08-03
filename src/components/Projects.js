@@ -124,6 +124,9 @@ const Projects = () => {
                           src={project.image}
                           alt={project.title}
                           className="project-img"
+                          width="400"
+                          height="250"
+                          loading="lazy"
                           onError={(e) => {
                             e.target.style.display = "none";
                             e.target.nextSibling.style.display = "flex";

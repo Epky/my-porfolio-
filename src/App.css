@@ -76,7 +76,11 @@ code {
 
 main {
   flex: 1;
-  padding-top: 70px; /* Account for fixed navigation */
+}
+
+/* Ensure anchor navigation doesn't hide content under the fixed navbar */
+section[id] {
+  scroll-margin-top: 80px;
 }
 
 /* Utility Classes */
@@ -293,8 +297,8 @@ main {
     font-size: 1rem;
   }
 
-  main {
-    padding-top: 60px;
+  section[id] {
+    scroll-margin-top: 70px;
   }
 }
 
