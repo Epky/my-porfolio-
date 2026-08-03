@@ -78,7 +78,7 @@ const Experience = () => {
       degree: "Bachelor of Science in Information Technology",
       school: "University of Mindanao",
       location: "Digos City, Philippines",
-      period: "2022 - 2026",
+      period: "2021 - 2026",
       relevant: [
         "Data Structures and Algorithms",
         "Object-Oriented Programming",

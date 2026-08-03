@@ -85,9 +85,8 @@ async function getBody(req) {
 }
 
 async function loadKnowledgeBase(req) {
-  const now = Date.now();
-  if (cachedKb && now - cachedKbAt < 300000) return cachedKb;
-
+  // Always fetch the latest knowledge base so the chatbot reflects
+  // updates as soon as a new version is deployed.
   const origin = getOrigin(req);
   if (!origin) return cachedKb || null;
 
@@ -98,7 +97,7 @@ async function loadKnowledgeBase(req) {
     const contentType = res.headers.get("content-type") || "";
     if (res.ok && contentType.includes("application/json")) {
       cachedKb = await res.json();
-      cachedKbAt = now;
+      cachedKbAt = Date.now();
       return cachedKb;
     }
     console.log(`[chat] KB fetch returned ${res.status} (${contentType}) for ${origin}`);
