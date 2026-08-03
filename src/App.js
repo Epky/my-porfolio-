@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { motion } from 'framer-motion';
 import './App.css';
 
@@ -10,6 +10,9 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+
+// Lazy-load chatbot so it doesn't affect initial page load
+const Chatbot = lazy(() => import('./components/Chatbot/Chatbot'));
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -55,6 +58,9 @@ function App() {
         <Certifications />
         <Contact />
       </main>
+      <Suspense fallback={null}>
+        <Chatbot />
+      </Suspense>
     </div>
   );
 }

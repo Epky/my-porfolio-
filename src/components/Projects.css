@@ -342,6 +342,14 @@
   box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
 }
 
+.projects-loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 0;
+  color: #cccccc;
+  font-size: 1.1rem;
+}
+
 /* Desktop Styles */
 @media (min-width: 1024px) {
   .projects-grid {

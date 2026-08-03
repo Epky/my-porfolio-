@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGithub,
-  FaExternalLinkAlt,
   FaCode,
   FaReact,
   FaNodeJs,
@@ -34,79 +33,31 @@ const Projects = () => {
     },
   };
 
-  const projects = [
-    {
-      id: 1,
-      title: "🛒 G.A. Ruiz Enterprise Business Hub",
-      description:
-        "A comprehensive web-based e-commerce and business management platform designed to streamline beauty product retail operations for G.A. Ruiz Enterprise.",
-      image: "/images/project/ga-landingpage.png",
-      github: "https://github.com/Epky/GA-system",
-      live: "https://ga-ruiz-enterprise-demo.com",
-      technologies: [
-        "PHP",
-        "MySQL",
-        "Laravel Breeze",
-        "Laravel",
-        "Tailwind",
-        "Alpine.js",
-        "Chart.js",
-      ],
-      features: [
-        "Customer Portal - Product browsing, cart management, order tracking",
-        "Staff Dashboard - Product & inventory management, walk-in transactions, low stock alerts",
-        "Admin Analytics - Comprehensive business intelligence, user management, system oversight",
-      ],
-    },
-    {
-      id: 2,
-      title: "🏠 RentMate",
-      description:
-        "A comprehensive rental management system designed to streamline property rental operations. Features tenant management, payment tracking, and property maintenance scheduling.",
-      image: "/images/project/Rentmate.png",
-      github: "https://github.com/Epky/rentmate",
-      live: "https://rentmate-demo.com",
-      technologies: [
-        "PHP",
-        "MySQL",
-        "Bootstrap",
-        "JavaScript",
-        "Tailwind",
-        "HTML",
-        "CSS",
-      ],
-      features: [
-        "Tenant Management - Registration, profile management, lease tracking",
-        "Payment System - Rent collection, payment history, automated reminders",
-        "Property Management - Unit listings, maintenance requests, occupancy tracking",
-      ],
-    },
-    {
-      id: 3,
-      title: "\uD83C\uDF34 PabNor's Beach Resort Management System",
-      description:
-        "A beach resort management system featuring online booking, payment verification, staff analytics, and an AI-powered customer support chatbot.",
-      image: "/images/project/pabnor's.png",
-      github: "https://github.com/Epky/pabnors-resort",
-      live: "https://pabnors-resort-demo.com",
-      technologies: [
-        "React",
-        "JavaScript",
-        "Tailwind CSS",
-        "FastAPI",
-        "Python",
-        "PostgreSQL",
-        "Docker Compose",
-      ],
-      features: [
-        "Booking System",
-        "Real-Time Notifications",
-        "Payment Verification",
-        "AI Chatbot"
-      ],
-    },
-  ];
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    let active = true;
+
+    fetch("/portfolio-knowledge.json")
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to load portfolio data");
+        return res.json();
+      })
+      .then((data) => {
+        if (active) setProjects(data.projects || []);
+      })
+      .catch(() => {
+        if (active) setProjects([]);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const getTechIcon = (tech) => {
     const iconMap = {
@@ -131,7 +82,6 @@ const Projects = () => {
     return iconMap[tech] || FaCode;
   };
 
-
   return (
     <section id="projects" className="projects">
       <div className="container">
@@ -150,101 +100,98 @@ const Projects = () => {
           </motion.div>
 
           <motion.div className="projects-grid">
-            <AnimatePresence mode="wait">
-              {projects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  className="project-card"
-                  layout
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.3 }}
-                  whileHover={{ y: -10 }}
-                >
-                  <div className="project-image">
-                    {project.image &&
-                      project.image !== "/api/placeholder/400/250" ? (
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="project-img"
-                        onError={(e) => {
-                          e.target.style.display = "none";
-                          e.target.nextSibling.style.display = "flex";
+            {loading ? (
+              <div className="projects-loading">
+                <p>Loading projects...</p>
+              </div>
+            ) : (
+              <AnimatePresence mode="wait">
+                {projects.map((project) => (
+                  <motion.div
+                    key={project.id}
+                    className="project-card"
+                    layout
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                    whileHover={{ y: -10 }}
+                  >
+                    <div className="project-image">
+                      {project.image &&
+                        project.image !== "/api/placeholder/400/250" ? (
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="project-img"
+                          onError={(e) => {
+                            e.target.style.display = "none";
+                            e.target.nextSibling.style.display = "flex";
+                          }}
+                        />
+                      ) : null}
+                      <div
+                        className="image-placeholder"
+                        style={{
+                          display:
+                            project.image &&
+                              project.image !== "/api/placeholder/400/250"
+                              ? "none"
+                              : "flex",
                         }}
-                      />
-                    ) : null}
-                    <div
-                      className="image-placeholder"
-                      style={{
-                        display:
-                          project.image &&
-                            project.image !== "/api/placeholder/400/250"
-                            ? "none"
-                            : "flex",
-                      }}
-                    >
-                      <FaCode className="placeholder-icon" />
-                    </div>
-                    <div className="project-overlay">
-                      <div className="project-links">
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                          title="View on GitHub"
-                        >
-                          <FaGithub />
-                        </a>
-                        <a
-                          href={project.live}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="project-link"
-                          title="Live Demo"
-                        >
-                          <FaExternalLinkAlt />
-                        </a>
+                      >
+                        <FaCode className="placeholder-icon" />
+                      </div>
+                      <div className="project-overlay">
+                        <div className="project-links">
+                          <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-link"
+                            title="View on GitHub"
+                          >
+                            <FaGithub />
+                          </a>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="project-content">
-                    <div className="project-header">
-                      <h3 className="project-title">{project.title}</h3>
-                    </div>
+                    <div className="project-content">
+                      <div className="project-header">
+                        <h3 className="project-title">{project.title}</h3>
+                      </div>
 
-                    <p className="project-description">{project.description}</p>
+                      <p className="project-description">{project.description}</p>
 
-                    <div className="project-features">
-                      <h4>Key Features:</h4>
-                      <ul>
-                        {project.features.map((feature, index) => (
-                          <li key={index}>{feature}</li>
-                        ))}
-                      </ul>
-                    </div>
+                      <div className="project-features">
+                        <h4>Key Features:</h4>
+                        <ul>
+                          {project.features.map((feature, index) => (
+                            <li key={index}>{feature}</li>
+                          ))}
+                        </ul>
+                      </div>
 
-                    <div className="project-technologies">
-                      <h4>Technologies:</h4>
-                      <div className="tech-list">
-                        {project.technologies.map((tech, index) => {
-                          const TechIcon = getTechIcon(tech);
-                          return (
-                            <span key={index} className="tech-item">
-                              <TechIcon />
-                              <span>{tech}</span>
-                            </span>
-                          );
-                        })}
+                      <div className="project-technologies">
+                        <h4>Technologies:</h4>
+                        <div className="tech-list">
+                          {project.technologies.map((tech, index) => {
+                            const TechIcon = getTechIcon(tech);
+                            return (
+                              <span key={index} className="tech-item">
+                                <TechIcon />
+                                <span>{tech}</span>
+                              </span>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            )}
           </motion.div>
 
           <motion.div className="github-cta" variants={itemVariants}>

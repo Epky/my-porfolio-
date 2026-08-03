@@ -56,6 +56,13 @@
   gap: 2rem;
 }
 
+.certifications-loading {
+  text-align: center;
+  padding: 3rem 0;
+  color: #cccccc;
+  font-size: 1.1rem;
+}
+
 .certification-card {
   background: #111111;
   border-radius: 20px;
