@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGithub,
@@ -10,14 +10,11 @@ import {
   FaPython,
   FaDatabase,
   FaCloud,
-  FaTools,
   FaDocker,
 } from "react-icons/fa";
 import "./Projects.css";
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState("all");
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -46,7 +43,6 @@ const Projects = () => {
       image: "/images/project/ga-landingpage.png",
       github: "https://github.com/Epky/GA-system",
       live: "https://ga-ruiz-enterprise-demo.com",
-      category: "fullstack",
       technologies: [
         "PHP",
         "MySQL",
@@ -70,7 +66,6 @@ const Projects = () => {
       image: "/images/project/Rentmate.png",
       github: "https://github.com/Epky/rentmate",
       live: "https://rentmate-demo.com",
-      category: "fullstack",
       technologies: [
         "PHP",
         "MySQL",
@@ -94,7 +89,6 @@ const Projects = () => {
       image: "/images/project/pabnor's.png",
       github: "https://github.com/Epky/pabnors-resort",
       live: "https://pabnors-resort-demo.com",
-      category: "fullstack",
       technologies: [
         "React",
         "JavaScript",
@@ -113,12 +107,6 @@ const Projects = () => {
     },
   ];
 
-  const categories = [
-    { id: "all", label: "All Projects", icon: FaCode },
-    { id: "frontend", label: "Frontend", icon: FaReact },
-    { id: "backend", label: "Backend", icon: FaNodeJs },
-    { id: "fullstack", label: "Full Stack", icon: FaTools },
-  ];
 
   const getTechIcon = (tech) => {
     const iconMap = {
@@ -143,10 +131,6 @@ const Projects = () => {
     return iconMap[tech] || FaCode;
   };
 
-  const filteredProjects =
-    activeFilter === "all"
-      ? projects
-      : projects.filter((project) => project.category === activeFilter);
 
   return (
     <section id="projects" className="projects">
@@ -165,25 +149,9 @@ const Projects = () => {
             </p>
           </motion.div>
 
-          <motion.div className="project-filters" variants={itemVariants}>
-            {categories.map((category) => (
-              <motion.button
-                key={category.id}
-                className={`filter-btn ${activeFilter === category.id ? "active" : ""
-                  }`}
-                onClick={() => setActiveFilter(category.id)}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <category.icon />
-                <span>{category.label}</span>
-              </motion.button>
-            ))}
-          </motion.div>
-
           <motion.div className="projects-grid">
             <AnimatePresence mode="wait">
-              {filteredProjects.map((project) => (
+              {projects.map((project) => (
                 <motion.div
                   key={project.id}
                   className="project-card"

@@ -50,42 +50,6 @@
   font-weight: 500;
 }
 
-.project-filters {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-  margin-bottom: 2rem;
-}
-
-.filter-btn {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: #111111;
-  border: 2px solid rgba(0, 255, 136, 0.2);
-  border-radius: 25px;
-  color: #cccccc;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.filter-btn:hover {
-  background: rgba(0, 255, 136, 0.1);
-  color: #00ff88;
-  border-color: rgba(0, 255, 136, 0.4);
-  box-shadow: 0 0 15px rgba(0, 255, 136, 0.2);
-}
-
-.filter-btn.active {
-  background: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-  color: #000000;
-  border-color: transparent;
-  box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-}
 
 .projects-grid {
   display: grid;
@@ -430,17 +394,6 @@
     font-size: 1rem;
   }
 
-  .project-filters {
-    gap: 0.5rem;
-  }
-
-  .filter-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    /* Ensure minimum touch target size of 44x44px */
-    min-height: 44px;
-    min-width: 44px;
-  }
 
   .projects-grid {
     grid-template-columns: 1fr;
@@ -505,18 +458,6 @@
     font-size: 2rem;
   }
 
-  .project-filters {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .filter-btn {
-    width: 100%;
-    max-width: 200px;
-    justify-content: center;
-    /* Maintain minimum touch target size */
-    min-height: 44px;
-  }
 
   .project-content {
     padding: 1.25rem;
