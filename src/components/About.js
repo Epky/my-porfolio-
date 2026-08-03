@@ -25,8 +25,8 @@ const About = () => {
   const education = [
     {
       degree: "Bachelor of Science in Information Technology",
-      school: "University of Mindanao",
-      location: "Digos City, Philippines",
+      school: "University of Mindanao Digos College",
+      location: "Digos City, Davao del Sur",
       period: "2022 - 2026",
       relevant: [
         "Data Structures and Algorithms",
