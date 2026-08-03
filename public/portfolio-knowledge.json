@@ -22,15 +22,64 @@
       "Doing things with honesty and effort",
       "Collaborative Teamwork",
       "Open to exploring new tech and ideas"
-    ]
+    ],
+    "education": {
+      "degree": "Bachelor of Science in Information Technology",
+      "school": "University of Mindanao",
+      "location": "Digos City, Philippines",
+      "period": "2022 - 2026",
+      "relevantCourses": [
+        "Data Structures and Algorithms",
+        "Object-Oriented Programming",
+        "Database Systems",
+        "Web Development",
+        "Mobile Application Development"
+      ]
+    }
   },
   "skills": {
     "frontend": ["HTML", "CSS", "JavaScript", "React", "Bootstrap"],
     "backend": ["PHP", "Laravel", "Python", "FastAPI"],
     "database": ["MySQL", "PostgreSQL"],
     "toolsAndPlatforms": ["phpMyAdmin", "Supabase", "Git", "GitHub", "Docker", "Tailwind CSS", "Alpine.js", "Chart.js"],
-    "otherDomains": ["Cybersecurity Fundamentals", "Networking", "Computer Systems Setup and Maintenance"]
+    "otherDomains": ["Cybersecurity Fundamentals", "Networking", "Computer Systems Setup and Maintenance", "IT Support", "Hardware Troubleshooting", "CCTV Systems", "Printer Troubleshooting", "UPS Systems"]
   },
+  "workExperience": [
+    {
+      "title": "Information Technology Intern (On-the-Job Training)",
+      "company": "BIG 8 Corporate Hotel",
+      "department": "Information Technology Department",
+      "location": "Digos City, Davao del Sur",
+      "period": "May - June 2026",
+      "role": "IT Intern",
+      "type": "On-the-Job Training",
+      "description": "Completed an on-the-job training in the Information Technology Department, providing technical support and assisting in the maintenance of the hotel's computer systems, network infrastructure, CCTV surveillance, and office equipment. Collaborated with different departments to resolve technical issues and ensure the smooth operation of daily hotel activities.",
+      "responsibilities": [
+        "Diagnosed and resolved computer hardware and software issues",
+        "Installed and configured desktop computer systems",
+        "Performed computer setup and workstation transfers",
+        "Troubleshot Wi-Fi and network connectivity issues",
+        "Monitored and maintained CCTV systems",
+        "Assisted in CCTV rewiring and maintenance",
+        "Troubleshot and repaired printer-related issues",
+        "Installed and replaced UPS (Uninterruptible Power Supply) batteries",
+        "Troubleshot telephone line connectivity issues",
+        "Provided technical support to multiple hotel departments"
+      ],
+      "skills": [
+        "Technical Support",
+        "Computer Hardware Troubleshooting",
+        "Software Troubleshooting",
+        "Computer Installation & Configuration",
+        "Network & Wi-Fi Troubleshooting",
+        "CCTV Monitoring & Maintenance",
+        "Printer Troubleshooting",
+        "Hardware Diagnostics",
+        "UPS Battery Replacement",
+        "Basic IT Infrastructure Support"
+      ]
+    }
+  ],
   "learningExperiences": [
     {
       "title": "Hack the System: Offensive Security & Ethical Hacking",

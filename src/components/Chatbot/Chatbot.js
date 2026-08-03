@@ -7,6 +7,7 @@ import "./Chatbot.css";
 const SUGGESTIONS = [
   "What projects have you built?",
   "What tech stack do you use?",
+  "Tell me about your work experience",
   "Tell me about your certifications",
   "How can I contact you?",
 ];
@@ -170,7 +171,7 @@ const Chatbot = () => {
             <form className="chatbot-form" onSubmit={handleSubmit}>
               <textarea
                 className="chatbot-input"
-                placeholder="Ask about projects, skills, certifications..."
+                placeholder="Ask about experience, projects, skills, certifications..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}

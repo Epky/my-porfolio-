@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaUser, FaCode, FaRocket, FaHeart, FaAward } from "react-icons/fa";
+import { FaUser, FaCode, FaRocket, FaHeart, FaAward, FaGraduationCap } from "react-icons/fa";
 import "./About.css";
 
 const About = () => {
@@ -21,6 +21,22 @@ const About = () => {
       opacity: 1,
     },
   };
+
+  const education = [
+    {
+      degree: "Bachelor of Science in Information Technology",
+      school: "University of Mindanao",
+      location: "Digos City, Philippines",
+      period: "2022 - 2026",
+      relevant: [
+        "Data Structures and Algorithms",
+        "Object-Oriented Programming",
+        "Database Systems",
+        "Web Development",
+        "Mobile Application Development",
+      ],
+    },
+  ];
 
   const aboutPoints = [
     {
@@ -110,6 +126,35 @@ const About = () => {
               ))}
             </motion.div>
           </div>
+
+          <motion.div className="education-card" variants={itemVariants}>
+            <div className="section-header">
+              <FaGraduationCap className="section-icon" />
+              <h3>Education</h3>
+            </div>
+
+            {education.map((edu, index) => (
+              <div key={index} className="education-content">
+                <h4 className="degree">{edu.degree}</h4>
+                <div className="education-meta">
+                  <span className="school">{edu.school}</span>
+                  <span className="location">{edu.location}</span>
+                  <span className="period">{edu.period}</span>
+                </div>
+
+                <div className="relevant-courses">
+                  <h5>Relevant Coursework:</h5>
+                  <div className="course-tags">
+                    {edu.relevant.map((course, courseIndex) => (
+                      <span key={courseIndex} className="course-tag">
+                        {course}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

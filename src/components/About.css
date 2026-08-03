@@ -225,6 +225,94 @@
   margin: 0;
 }
 
+.education-card {
+  background: #111111;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+  border-left: 4px solid #00ff88;
+}
+
+.education-card .section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+}
+
+.education-card .section-icon {
+  font-size: 1.5rem;
+  color: #00ff88;
+  text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.education-card .section-header h3 {
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin: 0;
+  font-weight: 700;
+}
+
+.education-card .degree {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+}
+
+.education-card .education-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.education-card .school {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.education-card .location {
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+.education-card .period {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.education-card .relevant-courses h5 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.education-card .course-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.education-card .course-tag {
+  background: rgba(0, 255, 136, 0.1);
+  color: #00ff88;
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+
 /* Mobile Styles */
 @media (max-width: 768px) {
   .about {
@@ -257,6 +345,16 @@
     padding: 1.5rem;
   }
 
+  .education-card {
+    padding: 1.5rem;
+  }
+
+  .education-card .education-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -284,6 +382,10 @@
   }
 
   .feature-card {
+    padding: 1rem;
+  }
+
+  .education-card {
     padding: 1rem;
   }
 

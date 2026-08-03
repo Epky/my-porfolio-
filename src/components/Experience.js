@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import {
   FaBriefcase,
-  FaCalendarAlt,
+  FaLightbulb,
   FaMapMarkerAlt,
   FaEye,
 } from "react-icons/fa";
@@ -27,6 +27,44 @@ const Experience = () => {
       opacity: 1,
     },
   };
+
+  const workExperience = [
+    {
+      title: "Information Technology Intern (On-the-Job Training)",
+      company: "BIG 8 Corporate Hotel",
+      location: "Digos City, Davao del Sur",
+      period: "May - June 2026",
+      type: "On-the-Job Training",
+      description:
+        "Completed an on-the-job training in the Information Technology Department, providing technical support and assisting in the maintenance of the hotel's computer systems, network infrastructure, CCTV surveillance, and office equipment. Collaborated with different departments to resolve technical issues and ensure the smooth operation of daily hotel activities.",
+      achievementsLabel: "Key Responsibilities",
+      achievements: [
+        "Diagnosed and resolved computer hardware and software issues",
+        "Installed and configured desktop computer systems",
+        "Performed computer setup and workstation transfers",
+        "Troubleshot Wi-Fi and network connectivity issues",
+        "Monitored and maintained CCTV systems",
+        "Assisted in CCTV rewiring and maintenance",
+        "Troubleshot and repaired printer-related issues",
+        "Installed and replaced UPS (Uninterruptible Power Supply) batteries",
+        "Troubleshot telephone line connectivity issues",
+        "Provided technical support to multiple hotel departments",
+      ],
+      technologiesLabel: "Skills & Technologies",
+      technologies: [
+        "Technical Support",
+        "Computer Hardware Troubleshooting",
+        "Software Troubleshooting",
+        "Computer Installation & Configuration",
+        "Network & Wi-Fi Troubleshooting",
+        "CCTV Monitoring & Maintenance",
+        "Printer Troubleshooting",
+        "Hardware Diagnostics",
+        "UPS Battery Replacement",
+        "Basic IT Infrastructure Support",
+      ],
+    },
+  ];
 
   const experiences = [
     {
@@ -73,19 +111,16 @@ const Experience = () => {
     },
   ];
 
-  const education = [
+  const timelineBlocks = [
     {
-      degree: "Bachelor of Science in Information Technology",
-      school: "University of Mindanao",
-      location: "Digos City, Philippines",
-      period: "2021 - 2026",
-      relevant: [
-        "Data Structures and Algorithms",
-        "Object-Oriented Programming",
-        "Database Systems",
-        "Web Development",
-        "Mobile Application Development",
-      ],
+      icon: FaBriefcase,
+      title: "Work Experience",
+      items: workExperience,
+    },
+    {
+      icon: FaLightbulb,
+      title: "Learning Experiences & Projects",
+      items: experiences,
     },
   ];
 
@@ -100,9 +135,9 @@ const Experience = () => {
           viewport={{ once: true }}
         >
           <motion.div className="experience-header" variants={itemVariants}>
-            <h2 className="section-title">Learning Experiences & Education</h2>
+            <h2 className="section-title">Experience</h2>
             <p className="section-subtitle">
-              My learning experiences, workshops, and academic background
+              My work experience, workshops, and learning journey
             </p>
             <motion.a
               href="https://epky.github.io/resume/"
@@ -118,101 +153,69 @@ const Experience = () => {
           </motion.div>
 
           <div className="experience-timeline">
-            <motion.div className="work-experience" variants={itemVariants}>
-              <div className="section-header">
-                <FaBriefcase className="section-icon" />
-                <h3>Learning Experiences & Projects</h3>
-              </div>
+            {timelineBlocks.map((block, blockIndex) => (
+              <motion.div
+                className="work-experience"
+                variants={itemVariants}
+                key={blockIndex}
+              >
+                <div className="section-header">
+                  <block.icon className="section-icon" />
+                  <h3>{block.title}</h3>
+                </div>
 
-              <div className="timeline">
-                {experiences.map((exp, index) => (
-                  <motion.div
-                    key={index}
-                    className="timeline-item"
-                    initial={{ opacity: 0, x: -50 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.2 }}
-                  >
-                    <div className="timeline-marker"></div>
-                    <div className="timeline-content">
-                      <div className="job-header">
-                        <h4 className="job-title">{exp.title}</h4>
-                        <div className="job-meta">
-                          <span className="company">{exp.company}</span>
-                          <span className="period">{exp.period}</span>
+                <div className="timeline">
+                  {block.items.map((exp, index) => (
+                    <motion.div
+                      key={index}
+                      className="timeline-item"
+                      initial={{ opacity: 0, x: -50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.2 }}
+                    >
+                      <div className="timeline-marker"></div>
+                      <div className="timeline-content">
+                        <div className="job-header">
+                          <h4 className="job-title">{exp.title}</h4>
+                          <div className="job-meta">
+                            <span className="company">{exp.company}</span>
+                            <span className="period">{exp.period}</span>
+                          </div>
+                          <div className="job-location">
+                            <FaMapMarkerAlt />
+                            <span>{exp.location}</span>
+                            <span className="job-type">{exp.type}</span>
+                          </div>
                         </div>
-                        <div className="job-location">
-                          <FaMapMarkerAlt />
-                          <span>{exp.location}</span>
-                          <span className="job-type">{exp.type}</span>
+
+                        <p className="job-description">{exp.description}</p>
+
+                        <div className="achievements">
+                          <h5>{exp.achievementsLabel || "Key Achievements"}</h5>
+                          <ul>
+                            {exp.achievements.map((achievement, achIndex) => (
+                              <li key={achIndex}>{achievement}</li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="technologies">
+                          <h5>{exp.technologiesLabel || "Technologies Used"}</h5>
+                          <div className="tech-tags">
+                            {exp.technologies.map((tech, techIndex) => (
+                              <span key={techIndex} className="tech-tag">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
                       </div>
-
-                      <p className="job-description">{exp.description}</p>
-
-                      <div className="achievements">
-                        <h5>Key Achievements:</h5>
-                        <ul>
-                          {exp.achievements.map((achievement, achIndex) => (
-                            <li key={achIndex}>{achievement}</li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      <div className="technologies">
-                        <h5>Technologies Used:</h5>
-                        <div className="tech-tags">
-                          {exp.technologies.map((tech, techIndex) => (
-                            <span key={techIndex} className="tech-tag">
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div className="education" variants={itemVariants}>
-              <div className="section-header">
-                <FaCalendarAlt className="section-icon" />
-                <h3>Education</h3>
-              </div>
-
-              {education.map((edu, index) => (
-                <motion.div
-                  key={index}
-                  className="education-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                >
-                  <div className="education-content">
-                    <h4 className="degree">{edu.degree}</h4>
-                    <div className="education-meta">
-                      <span className="school">{edu.school}</span>
-                      <span className="location">{edu.location}</span>
-                      <span className="period">{edu.period}</span>
-                    </div>
-
-                    <div className="relevant-courses">
-                      <h5>Relevant Coursework:</h5>
-                      <div className="course-tags">
-                        {edu.relevant.map((course, courseIndex) => (
-                          <span key={courseIndex} className="course-tag">
-                            {course}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
