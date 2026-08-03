@@ -30,10 +30,37 @@ function getOrigin(req) {
   // Prefer the host the visitor actually used (always serves the right content),
   // then fall back to the VERCEL_URL deployment domain.
   const host = req.headers.host;
-  if (host) return `https://${host}`;
+  if (host) {
+    // Local "vercel dev" serves plain HTTP on localhost.
+    const isLocal = /^(localhost|127\.0\.0\.1)(:\d+)?$/.test(host);
+    return `${isLocal ? "http" : "https"}://${host}`;
+  }
   const vercelUrl = process.env.VERCEL_URL;
   if (vercelUrl) return `https://${vercelUrl}`;
   return null;
+}
+
+function readRawBody(req) {
+  return new Promise((resolve, reject) => {
+    const chunks = [];
+    req.on("data", (c) => chunks.push(c));
+    req.on("end", () => resolve(Buffer.concat(chunks).toString("utf8")));
+    req.on("error", reject);
+  });
+}
+
+async function getBody(req) {
+  try {
+    // Production Vercel runtime: req.body is pre-parsed (object) or a JSON string.
+    if (req.body !== undefined && req.body !== null) {
+      return typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+    }
+  } catch {
+    // "vercel dev" (CLI 58.x / Node 24): the req.body getter throws "Invalid JSON"
+    // even on valid payloads. Fall back to reading the raw request stream.
+  }
+  const raw = await readRawBody(req);
+  return raw.trim() ? JSON.parse(raw) : null;
 }
 
 async function loadKnowledgeBase(req) {
@@ -75,7 +102,7 @@ export default async function handler(req, res) {
 
   let body;
   try {
-    body = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
+    body = await getBody(req);
   } catch (err) {
     return res.status(400).json({ error: "Invalid request body" });
   }
