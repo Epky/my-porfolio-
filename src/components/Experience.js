@@ -33,7 +33,7 @@ const Experience = () => {
       title: "Information Technology Intern (On-the-Job Training)",
       company: "BIG 8 Corporate Hotel",
       location: "Digos City, Davao del Sur",
-      period: "May - June 2026",
+      period: "March - July 2026",
       type: "On-the-Job Training",
       description:
         "Completed an on-the-job training in the Information Technology Department, providing technical support and assisting in the maintenance of the hotel's computer systems, network infrastructure, CCTV surveillance, and office equipment. Collaborated with different departments to resolve technical issues and ensure the smooth operation of daily hotel activities.",
