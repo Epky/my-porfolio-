@@ -1,4 +1,17 @@
 import { detectAbuse, detectLanguage, detectOffTopic, friendlyReply } from "./guardrails.js";
+import { answerFromKb } from "./kb-fallback.js";
+
+const MODEL_FALLBACK_LIST = [
+  "agnes-2.0-flash",
+  "mistral-large",
+  "mistral-medium-3-5",
+  "stepfun-3.7-flash",
+];
+
+const KB_FETCH_TIMEOUT_MS = 1500;
+const FIRST_MODEL_TIMEOUT_MS = 12000;
+const RETRY_TIMEOUT_MS = 4000;
+const NEXT_MODEL_TIMEOUT_MS = 5000;
 
 const RATE_LIMIT_WINDOW_MS = 60000;
 const RATE_LIMIT_MAX = 20;
@@ -10,6 +23,11 @@ let cachedKbAt = 0;
 function buildSystemPrompt(kb) {
   const rules = [
     "You are the portfolio assistant for Edsel Suralta Payan, an IT graduate (Bachelor of Science in Information Technology, University of Mindanao, 2022 - 2026) and recent IT intern at BIG 8 Corporate Hotel in Digos City, Davao del Sur (On-the-Job Training, May - June 2026). He is based in Digos City, Davao del Sur, Philippines, and is open to entry-level positions and training opportunities.",
+    "",
+    "IDENTITY:",
+    "- Your name is \"Edsel's Assistant\". You represent Edsel Suralta Payan and speak on his behalf.",
+    "- When asked your name or who you are, ALWAYS say you are Edsel's Assistant, Edsel Suralta Payan's portfolio assistant.",
+    "- NEVER reveal, use, or mention the model's own name (for example: Agnes) or the company that made you.",
     "",
     "HARD RULE - KNOWLEDGE BASE ONLY:",
     "- Your answers MUST contain ONLY information from the knowledge base below. NEVER use your own general knowledge to answer: no facts, definitions, trivia, math, news, explanations, jokes, or advice that are NOT in the knowledge base.",
@@ -51,7 +69,9 @@ function buildSystemPrompt(kb) {
     'Assistant: "Walang anuman! 😊 Masaya akong nakatulong. May iba ka pa bang gustong malaman tungkol kay Edsel?"',
     "",
     "KNOWLEDGE BASE:",
-    JSON.stringify(kb, null, 2),
+    kb
+      ? JSON.stringify(kb, null, 2)
+      : "The knowledge base is temporarily unavailable. If the visitor asks about Edsel, apologize briefly and redirect them to the contact form at the bottom of the page.",
   ].join("\n");
 
   return rules;
@@ -102,7 +122,7 @@ async function loadKnowledgeBase(req) {
 
   try {
     const res = await fetch(`${origin}/portfolio-knowledge.json`, {
-      signal: AbortSignal.timeout(2000),
+      signal: AbortSignal.timeout(KB_FETCH_TIMEOUT_MS),
     });
     const contentType = res.headers.get("content-type") || "";
     if (res.ok && contentType.includes("application/json")) {
@@ -189,11 +209,55 @@ export default async function handler(req, res) {
   const systemPrompt = buildSystemPrompt(kb);
 
   const baseUrl = process.env.NARAROUTER_BASE_URL || "https://router.bynara.id/v1";
-  const model = process.env.NARAROUTER_MODEL || "agnes-2.5-flash";
+  const primaryModel = process.env.NARAROUTER_MODEL || "agnes-2.0-flash";
+  const modelQueue = [
+    primaryModel,
+    ...MODEL_FALLBACK_LIST.filter((m) => m !== primaryModel),
+  ];
 
+  const result = await tryModels(baseUrl, apiKey, modelQueue, systemPrompt, messages);
+
+  if (result.ok) {
+    return res.status(200).json({ reply: result.reply });
+  }
+
+  console.log(
+    `[chat] all models failed (${result.reason}, status ${result.status}, model ${result.model}): ${result.message}`
+  );
+
+  // Offline knowledge-base fallback so the chatbot never goes completely silent.
+  if (lastUserMessage) {
+    const fallbackReply = answerFromKb(lastUserMessage.content, kb);
+    if (fallbackReply) {
+      console.log(`[chat] answered with offline KB fallback`);
+      return res.status(200).json({ reply: fallbackReply, fallback: true });
+    }
+  }
+
+  return res
+    .status(503)
+    .json({ error: "assistant_unavailable", message: friendlyUnavailableMessage(result) });
+}
+
+function isCreditRelated(status, message) {
+  return (
+    status === 402 ||
+    (typeof message === "string" && /credit|top up|balance/i.test(message))
+  );
+}
+
+function isHardPlanError(status, message) {
+  return (
+    status === 401 ||
+    status === 403 ||
+    isCreditRelated(status, message) ||
+    (status === 429 && /credit|top up|balance/i.test(message))
+  );
+}
+
+async function callModel(baseUrl, apiKey, model, systemPrompt, messages, timeoutMs) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12000);
-
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
     const upstream = await fetch(`${baseUrl}/chat/completions`, {
       method: "POST",
@@ -209,25 +273,66 @@ export default async function handler(req, res) {
       }),
       signal: controller.signal,
     });
-
     const data = await upstream.json();
-
-    if (!upstream.ok) {
-      return res.status(502).json({ error: "Assistant service error" });
-    }
-
-    const reply = data?.choices?.[0]?.message?.content;
-    if (!reply) {
-      return res.status(502).json({ error: "Empty assistant response" });
-    }
-
-    return res.status(200).json({ reply });
+    return { ok: upstream.ok, status: upstream.status, data, aborted: false };
   } catch (err) {
-    if (err.name === "AbortError") {
-      return res.status(504).json({ error: "Request timed out" });
-    }
-    return res.status(500).json({ error: "Internal error" });
+    return { ok: false, status: 0, data: null, aborted: err.name === "AbortError" };
   } finally {
-    clearTimeout(timeout);
+    clearTimeout(timer);
   }
+}
+
+async function tryModels(baseUrl, apiKey, modelQueue, systemPrompt, messages) {
+  for (let i = 0; i < modelQueue.length; i++) {
+    const model = modelQueue[i];
+    const timeoutMs = i === 0 ? FIRST_MODEL_TIMEOUT_MS : NEXT_MODEL_TIMEOUT_MS;
+    const first = await callModel(baseUrl, apiKey, model, systemPrompt, messages, timeoutMs);
+
+    if (first.ok && first.data?.choices?.[0]?.message?.content) {
+      return { ok: true, reply: first.data.choices[0].message.content };
+    }
+
+    const firstMsg = first.data?.error?.message || (first.aborted ? "request timed out" : "empty response");
+    console.log(`[chat] model ${model} -> status ${first.status} (${firstMsg})`);
+
+    if (first.aborted || first.status === 0) {
+      return { ok: false, model, status: first.status, message: firstMsg, reason: "timeout" };
+    }
+
+    if (isHardPlanError(first.status, firstMsg)) {
+      if (i < modelQueue.length - 1) continue;
+      return { ok: false, model, status: first.status, message: firstMsg, reason: "plan" };
+    }
+
+    // Transient failure: retry once on the primary model before moving on.
+    if (i === 0) {
+      const retry = await callModel(baseUrl, apiKey, model, systemPrompt, messages, RETRY_TIMEOUT_MS);
+      if (retry.ok && retry.data?.choices?.[0]?.message?.content) {
+        return { ok: true, reply: retry.data.choices[0].message.content };
+      }
+      const retryMsg = retry.data?.error?.message || (retry.aborted ? "request timed out" : "empty response");
+      console.log(`[chat] model ${model} retry -> status ${retry.status} (${retryMsg})`);
+      if (retry.aborted || retry.status === 0) {
+        return { ok: false, model, status: retry.status, message: retryMsg, reason: "timeout" };
+      }
+      if (isHardPlanError(retry.status, retryMsg)) {
+        continue;
+      }
+      return { ok: false, model, status: retry.status, message: retryMsg, reason: "error" };
+    }
+
+    return { ok: false, model, status: first.status, message: firstMsg, reason: "error" };
+  }
+
+  return { ok: false, model: modelQueue[0], status: 0, message: "All models failed", reason: "error" };
+}
+
+function friendlyUnavailableMessage(result) {
+  if (result.reason === "plan") {
+    return "The AI assistant is temporarily unavailable because the configured model is not included in the current plan. Please try again later or use the contact form at the bottom of the page.";
+  }
+  if (result.reason === "timeout") {
+    return "The AI assistant is taking too long to respond right now. Please try again in a moment.";
+  }
+  return "The AI assistant is temporarily unavailable. Please try again later or use the contact form at the bottom of the page.";
 }

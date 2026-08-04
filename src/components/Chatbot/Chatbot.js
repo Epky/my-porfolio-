@@ -46,7 +46,11 @@ const Chatbot = () => {
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Request failed");
+        const err = new Error(data?.error || "Request failed");
+        if (typeof data?.message === "string" && data.message.trim()) {
+          err.userMessage = data.message.trim();
+        }
+        throw err;
       }
 
       setMessages((prev) => [
@@ -54,12 +58,16 @@ const Chatbot = () => {
         { role: "assistant", content: data.reply },
       ]);
     } catch (err) {
+      const fallback =
+        "Sorry, I couldn't reach the assistant right now. Please try again later, or use the contact form at the bottom of the page.";
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
           content:
-            "Sorry, I couldn't reach the assistant right now. Please try again later, or use the contact form at the bottom of the page.",
+            err && typeof err.userMessage === "string"
+              ? err.userMessage
+              : fallback,
         },
       ]);
     } finally {

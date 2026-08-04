@@ -68,11 +68,11 @@ const PORTFOLIO_TERMS = [
 // Phrases where the visitor is talking to the assistant itself. Let the AI
 // handle these (it can introduce itself / offer help) instead of a canned reply.
 const BOT_SELF_PHRASES = [
-  /who are you/i, /what('s| is) your name/i, /your name/i, /what do you do/i,
-  /what can you do/i, /what are you/i, /sino ka/i, /pangalan/i, /kaya mo ba/i,
-  /unsa ka/i, /tell me about yourself/i, /about yourself/i, /about you/i,
-  /can you help/i, /can u help/i, /pa help/i, /how are you/i, /kumusta ka/i,
-  /kamusta ka/i,
+  /who are you/i, /what('s| is) your name/i, /your name/i, /your name is/i,
+  /what do you do/i, /what can you do/i, /what are you/i, /sino ka/i, /pangalan/i,
+  /are you agnes/i, /kaya mo ba/i, /unsa ka/i, /tell me about yourself/i,
+  /about yourself/i, /about you/i, /can you help/i, /can u help/i, /pa help/i,
+  /how are you/i, /kumusta ka/i, /kamusta ka/i,
 ];
 
 const GRATITUDE_TERMS = [
