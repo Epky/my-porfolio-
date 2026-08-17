@@ -62,7 +62,7 @@ const PORTFOLIO_TERMS = [
   "background", "academics", "availability", "rentmate", "pabnor", "pabnors",
   "g.a. ruiz", "ga-ruiz", "salin", "kaalaman", "wadhwani", "umasenso",
   "mapua", "bootcamp", "workshop", "cybersecurity", "penetration", "hacking",
-  "chatbot", "email",
+  "chatbot", "email", "name", "fullname", "pangalan", "full name", "buong pangalan", "who", "age", "location",
 ];
 
 // Phrases where the visitor is talking to the assistant itself. Let the AI
