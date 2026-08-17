@@ -7,6 +7,7 @@ import {
   FaEye,
 } from "react-icons/fa";
 import "./Experience.css";
+import portfolioData from "../data/portfolioData";
 
 const Experience = () => {
   const containerVariants = {
@@ -28,88 +29,21 @@ const Experience = () => {
     },
   };
 
-  const workExperience = [
-    {
-      title: "Information Technology Intern (On-the-Job Training)",
-      company: "BIG 8 Corporate Hotel",
-      location: "Digos City, Davao del Sur",
-      period: "March - July 2026",
-      type: "On-the-Job Training",
-      description:
-        "Completed an on-the-job training in the Information Technology Department, providing technical support and assisting in the maintenance of the hotel's computer systems, network infrastructure, CCTV surveillance, and office equipment. Collaborated with different departments to resolve technical issues and ensure the smooth operation of daily hotel activities.",
-      achievementsLabel: "Key Responsibilities",
-      achievements: [
-        "Diagnosed and resolved computer hardware and software issues",
-        "Installed and configured desktop computer systems",
-        "Performed computer setup and workstation transfers",
-        "Troubleshot Wi-Fi and network connectivity issues",
-        "Monitored and maintained CCTV systems",
-        "Assisted in CCTV rewiring and maintenance",
-        "Troubleshot and repaired printer-related issues",
-        "Installed and replaced UPS (Uninterruptible Power Supply) batteries",
-        "Troubleshot telephone line connectivity issues",
-        "Provided technical support to multiple hotel departments",
-      ],
-      technologiesLabel: "Skills & Technologies",
-      technologies: [
-        "Technical Support",
-        "Computer Hardware Troubleshooting",
-        "Software Troubleshooting",
-        "Computer Installation & Configuration",
-        "Network & Wi-Fi Troubleshooting",
-        "CCTV Monitoring & Maintenance",
-        "Printer Troubleshooting",
-        "Hardware Diagnostics",
-        "UPS Battery Replacement",
-        "Basic IT Infrastructure Support",
-      ],
-    },
-  ];
+  const workExperience = portfolioData.workExperience.map((exp) => ({
+    ...exp,
+    achievementsLabel: "Key Responsibilities",
+    achievements: exp.responsibilities,
+    technologiesLabel: "Skills & Technologies",
+    technologies: exp.skills,
+  }));
 
-  const experiences = [
-    {
-      title: "Hack the System: Offensive Security & Ethical Hacking",
-      role: "Participant",
-      location: "Mapua Malayan Colleges Mindanao",
-      period: "October 7, 2024",
-      type: "Workshop",
-      description:
-        "Hands-on workshop focused on offensive security, penetration testing, and core cybersecurity practices.",
-      achievements: [
-        "Learned penetration testing techniques and fundamentals of cybersecurity",
-        "Acquired practical skills in offensive security methodologies",
-        "Developed understanding of system vulnerabilities and defense mechanisms",
-      ],
-      technologies: [
-        "Offensive Security",
-        "Penetration Testing",
-        "Cybersecurity",
-        "Security Analysis",
-      ],
-    },
-    {
-      title: "One Day Ideation Bootcamp",
-      company: "UMasenso Hub & Wadhwani Foundation",
-      location: "UM Digos Gymnasium",
-      period: "May 23, 2025",
-      type: "Bootcamp",
-      description:
-        "A dynamic ideation session designed to unlock creativity, spark innovation, and shape entrepreneurial thinking among young minds. Collaborated with students from UM Digos and UM Bansalan to develop innovative solutions for real-world problems.",
-      achievements: [
-        "Team Member of SalinKaalaman Company - Contributed to winning team's innovative language barrier solution",
-        "Participated in team-based ideation sessions with mentorship from industry experts",
-        "Presented innovative solution to distinguished panel of judges including UM Research Coordinator",
-      ],
-      technologies: [
-        "Innovation",
-        "Entrepreneurship",
-        "Team Collaboration",
-        "Problem Solving",
-        "SDG Alignment",
-        "Education Technology",
-      ],
-    },
-  ];
+  const experiences = portfolioData.learningExperiences.map((exp) => ({
+    ...exp,
+    achievementsLabel: "Key Achievements",
+    achievements: exp.highlights,
+    technologiesLabel: "Technologies Used",
+    technologies: exp.technologies,
+  }));
 
   const timelineBlocks = [
     {

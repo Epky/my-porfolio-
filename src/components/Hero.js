@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { FaEnvelope, FaEye, FaServer, FaNetworkWired } from "react-icons/fa";
 import "./Hero.css";
 import "./SocialIcons.css";
+import portfolioData from "../data/portfolioData";
 
 const Hero = () => {
   const containerVariants = {
@@ -77,8 +78,8 @@ const Hero = () => {
           <motion.div className="hero-text" variants={itemVariants}>
             <motion.h1 className="hero-title">
               <span className="greeting">Hello, I'm</span>
-              <span className="name">Edsel Suralta Payan</span>
-              <span className="title">Information Technology</span>
+              <span className="name">{portfolioData.identity.name}</span>
+              <span className="title">{portfolioData.identity.role}</span>
             </motion.h1>
 
             <motion.p className="hero-description" variants={itemVariants}>

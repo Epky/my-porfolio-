@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { FaUser, FaCode, FaRocket, FaHeart, FaAward, FaGraduationCap } from "react-icons/fa";
 import "./About.css";
+import portfolioData from "../data/portfolioData";
 
 const About = () => {
   const containerVariants = {
@@ -22,19 +23,14 @@ const About = () => {
     },
   };
 
+  const eduData = portfolioData.about.education;
   const education = [
     {
-      degree: "Bachelor of Science in Information Technology",
-      school: "University of Mindanao Digos College",
-      location: "Digos City, Davao del Sur",
-      period: "2022 - 2026",
-      relevant: [
-        "Data Structures and Algorithms",
-        "Object-Oriented Programming",
-        "Database Systems",
-        "Web Development",
-        "Mobile Application Development",
-      ],
+      degree: eduData.degree,
+      school: eduData.school,
+      location: eduData.location,
+      period: eduData.period,
+      relevant: eduData.relevantCourses,
     },
   ];
 
@@ -101,10 +97,9 @@ const About = () => {
               <div className="about-values">
                 <h4>My Values</h4>
                 <ul>
-                  <li>Continuous Learning and Growth</li>
-                  <li>Doing things with honesty and effort</li>
-                  <li>Collaborative Teamwork</li>
-                  <li>Open to exploring new tech and ideas</li>
+                  {portfolioData.about.values.map((value, index) => (
+                    <li key={index}>{value}</li>
+                  ))}
                 </ul>
               </div>
             </motion.div>

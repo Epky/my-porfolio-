@@ -1,37 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaCalendarAlt, FaCheckCircle, FaDownload, FaEye, FaMedal, FaChevronDown, FaChevronUp
 } from 'react-icons/fa';
 import './Certifications.css';
+import portfolioData from '../data/portfolioData';
 
 const Certifications = () => {
   const [showAll, setShowAll] = useState(false);
-  const [certifications, setCertifications] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let active = true;
-
-    fetch("/portfolio-knowledge.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load portfolio data");
-        return res.json();
-      })
-      .then((data) => {
-        if (active) setCertifications(data.certifications || []);
-      })
-      .catch(() => {
-        if (active) setCertifications([]);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
+  const certifications = portfolioData.certifications || [];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -66,13 +43,7 @@ const Certifications = () => {
             <h2 className="section-title">Certifications & Achievements</h2>
           </motion.div>
 
-          {loading ? (
-            <div className="certifications-loading">
-              <p>Loading certifications...</p>
-            </div>
-          ) : (
-            <>
-              <div className="certifications-grid">
+          <div className="certifications-grid">
                 {(showAll ? certifications : certifications.slice(0, 4)).map((cert, index) => (
                   <motion.div
                     key={cert.id}
@@ -168,8 +139,6 @@ const Certifications = () => {
                   </motion.button>
                 </motion.div>
               )}
-            </>
-          )}
         </motion.div>
       </div>
     </section>

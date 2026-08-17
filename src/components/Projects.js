@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaGithub,
@@ -12,6 +12,7 @@ import {
   FaDocker,
 } from "react-icons/fa";
 import "./Projects.css";
+import portfolioData from "../data/portfolioData";
 
 const Projects = () => {
   const containerVariants = {
@@ -33,32 +34,7 @@ const Projects = () => {
     },
   };
 
-  const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let active = true;
-
-    fetch("/portfolio-knowledge.json")
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to load portfolio data");
-        return res.json();
-      })
-      .then((data) => {
-        if (active) setProjects(data.projects || []);
-      })
-      .catch(() => {
-        if (active) setProjects([]);
-      })
-      .finally(() => {
-        if (active) setLoading(false);
-      });
-
-    return () => {
-      active = false;
-    };
-  }, []);
-
+  const projects = portfolioData.projects || [];
   const getTechIcon = (tech) => {
     const iconMap = {
       React: FaReact,
@@ -100,11 +76,6 @@ const Projects = () => {
           </motion.div>
 
           <motion.div className="projects-grid">
-            {loading ? (
-              <div className="projects-loading">
-                <p>Loading projects...</p>
-              </div>
-            ) : (
               <AnimatePresence mode="wait">
                 {projects.map((project) => (
                   <motion.div
@@ -194,7 +165,6 @@ const Projects = () => {
                   </motion.div>
                 ))}
               </AnimatePresence>
-            )}
           </motion.div>
 
           <motion.div className="github-cta" variants={itemVariants}>

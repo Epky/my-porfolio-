@@ -1,0 +1,269 @@
+const portfolioData = {
+  identity: {
+    name: "Edsel Suralta Payan",
+    role: "IT Graduate",
+    degree: "Bachelor of Science in Information Technology",
+    school: "University of Mindanao",
+    educationPeriod: "2022 - 2026",
+    classOf: "2026",
+    location: "Digos City, Davao del Sur, Philippines",
+    availability: "Open to entry-level positions and training opportunities",
+    professionalSummary: "Edsel is an IT graduate and aspiring web developer focused on creating functional, responsive, and user-friendly web applications. He is passionate about applying programming knowledge to build practical solutions while continuously expanding his skills in modern web technologies."
+  },
+  about: {
+    focusAreas: [
+      "System Analysis",
+      "Problem Solving",
+      "User Support",
+      "Quality Assurance"
+    ],
+    values: [
+      "Continuous Learning and Growth",
+      "Doing things with honesty and effort",
+      "Collaborative Teamwork",
+      "Open to exploring new tech and ideas"
+    ],
+    education: {
+      degree: "Bachelor of Science in Information Technology",
+      school: "University of Mindanao",
+      location: "Digos City, Philippines",
+      period: "2022 - 2026",
+      relevantCourses: [
+        "Data Structures and Algorithms",
+        "Object-Oriented Programming",
+        "Database Systems",
+        "Web Development",
+        "Mobile Application Development"
+      ]
+    }
+  },
+  skills: {
+    frontend: ["HTML", "CSS", "JavaScript", "React", "Bootstrap"],
+    backend: ["PHP", "Laravel", "Python", "FastAPI"],
+    database: ["MySQL", "PostgreSQL"],
+    toolsAndPlatforms: ["phpMyAdmin", "Supabase", "Git", "GitHub", "Docker", "Tailwind CSS", "Alpine.js", "Chart.js"],
+    otherDomains: ["Cybersecurity Fundamentals", "Networking", "Computer Systems Setup and Maintenance", "IT Support", "Hardware Troubleshooting", "CCTV Systems", "Printer Troubleshooting", "UPS Systems"]
+  },
+  workExperience: [
+    {
+      title: "Information Technology Intern (On-the-Job Training)",
+      company: "BIG 8 Corporate Hotel",
+      department: "Information Technology Department",
+      location: "Digos City, Davao del Sur",
+      period: "March - July 2026",
+      role: "IT Intern",
+      type: "On-the-Job Training",
+      description: "Completed an on-the-job training in the Information Technology Department, providing technical support and assisting in the maintenance of the hotel's computer systems, network infrastructure, CCTV surveillance, and office equipment. Collaborated with different departments to resolve technical issues and ensure the smooth operation of daily hotel activities.",
+      responsibilities: [
+        "Diagnosed and resolved computer hardware and software issues",
+        "Installed and configured desktop computer systems",
+        "Performed computer setup and workstation transfers",
+        "Troubleshot Wi-Fi and network connectivity issues",
+        "Monitored and maintained CCTV systems",
+        "Assisted in CCTV rewiring and maintenance",
+        "Troubleshot and repaired printer-related issues",
+        "Installed and replaced UPS (Uninterruptible Power Supply) batteries",
+        "Troubleshot telephone line connectivity issues",
+        "Provided technical support to multiple hotel departments"
+      ],
+      skills: [
+        "Technical Support",
+        "Computer Hardware Troubleshooting",
+        "Software Troubleshooting",
+        "Computer Installation & Configuration",
+        "Network & Wi-Fi Troubleshooting",
+        "CCTV Monitoring & Maintenance",
+        "Printer Troubleshooting",
+        "Hardware Diagnostics",
+        "UPS Battery Replacement",
+        "Basic IT Infrastructure Support"
+      ]
+    }
+  ],
+  learningExperiences: [
+    {
+      title: "Hack the System: Offensive Security & Ethical Hacking",
+      type: "Workshop",
+      role: "Participant",
+      organization: "Mapua Malayan Colleges Mindanao",
+      date: "October 7, 2024",
+      description: "Hands-on workshop focused on offensive security, penetration testing, and core cybersecurity practices.",
+      highlights: [
+        "Learned penetration testing techniques and fundamentals of cybersecurity",
+        "Acquired practical skills in offensive security methodologies",
+        "Developed understanding of system vulnerabilities and defense mechanisms"
+      ],
+      technologies: ["Offensive Security", "Penetration Testing", "Cybersecurity", "Security Analysis"]
+    },
+    {
+      title: "One Day Ideation Bootcamp",
+      type: "Bootcamp",
+      role: "Team Member",
+      organization: "UMasenso Hub & Wadhwani Foundation",
+      date: "May 23, 2025",
+      description: "A dynamic ideation session designed to unlock creativity, spark innovation, and shape entrepreneurial thinking among young minds.",
+      highlights: [
+        "Team Member of SalinKaalaman Company - contributed to the winning team's innovative language barrier solution",
+        "Participated in team-based ideation sessions with mentorship from industry experts",
+        "Presented an innovative solution to a distinguished panel of judges"
+      ],
+      technologies: ["Innovation", "Entrepreneurship", "Team Collaboration", "Problem Solving", "Education Technology"]
+    }
+  ],
+  projects: [
+    {
+      id: 1,
+      title: "G.A. Ruiz Enterprise Business Hub",
+      description: "A comprehensive web-based e-commerce and business management platform designed to streamline beauty product retail operations for G.A. Ruiz Enterprise.",
+      image: "/images/project/ga-landingpage.png",
+      github: "https://github.com/Epky/GA-system",
+      technologies: ["PHP", "MySQL", "Laravel Breeze", "Laravel", "Tailwind", "Alpine.js", "Chart.js"],
+      features: [
+        "Customer Portal - Product browsing, cart management, order tracking",
+        "Staff Dashboard - Product & inventory management, walk-in transactions, low stock alerts",
+        "Admin Analytics - Comprehensive business intelligence, user management, system oversight"
+      ]
+    },
+    {
+      id: 2,
+      title: "RentMate",
+      description: "A comprehensive rental management system designed to streamline property rental operations. Features tenant management, payment tracking, and property maintenance scheduling.",
+      image: "/images/project/Rentmate.png",
+      github: "https://github.com/Epky/rentmate",
+      technologies: ["PHP", "MySQL", "Bootstrap", "JavaScript", "Tailwind", "HTML", "CSS"],
+      features: [
+        "Tenant Management - Registration, profile management, lease tracking",
+        "Payment System - Rent collection, payment history, automated reminders",
+        "Property Management - Unit listings, maintenance requests, occupancy tracking"
+      ]
+    },
+    {
+      id: 3,
+      title: "PabNor's Beach Resort Management System",
+      description: "A beach resort management system featuring online booking, payment verification, staff analytics, and an AI-powered customer support chatbot.",
+      image: "/images/project/pabnor's.png",
+      github: "https://github.com/Epky/pabnors-resort",
+      technologies: ["React", "JavaScript", "Tailwind CSS", "FastAPI", "Python", "PostgreSQL", "Docker Compose"],
+      features: ["Booking System", "Real-Time Notifications", "Payment Verification", "AI Chatbot"]
+    }
+  ],
+  certifications: [
+    {
+      id: 1,
+      title: "FreeCodeCamp Certification",
+      issuer: "FreeCodeCamp",
+      date: "2024",
+      credentialId: "FCC-2024-001",
+      description: "Comprehensive web development certification covering HTML, CSS, JavaScript, and modern web technologies.",
+      skills: ["HTML", "CSS", "JavaScript", "Web Development", "Responsive Design"],
+      certificateUrl: "/images/certifications/freecodecamp.png"
+    },
+    {
+      id: 2,
+      title: "Introduction to CSS",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2024",
+      credentialId: "TESDA-CSS-2024-002",
+      description: "Fundamental CSS certification covering styling, layout, and responsive design principles.",
+      skills: ["CSS", "Styling", "Layout", "Responsive Design", "Web Design"],
+      certificateUrl: "/images/certifications/Intoduction to CSS.pdf"
+    },
+    {
+      id: 3,
+      title: "Installing and Configuring Computer Systems",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2022",
+      credentialId: "TESDA-ICCS-2022-003",
+      description: "Certification in computer system installation, configuration, and troubleshooting.",
+      skills: ["Computer Hardware", "System Installation", "Configuration", "Troubleshooting", "Maintenance"],
+      certificateUrl: "/images/certifications/Installing and Configuring Computer Systems.pdf"
+    },
+    {
+      id: 4,
+      title: "Setting Up Computer Servers",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2023",
+      credentialId: "TESDA-SUCS-2023-004",
+      description: "Certification in server setup, configuration, and management for enterprise environments.",
+      skills: ["Server Administration", "Network Setup", "System Configuration", "Security", "Monitoring"],
+      certificateUrl: "/images/certifications/Setting Up Computer Servers.pdf"
+    },
+    {
+      id: 5,
+      title: "Setting Up Computer Networks",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2023",
+      credentialId: "TESDA-SUCN-2023-005",
+      description: "Comprehensive network setup and configuration certification covering LAN, WAN, and network security.",
+      skills: ["Network Setup", "LAN/WAN", "Network Security", "Protocols", "Troubleshooting"],
+      certificateUrl: "/images/certifications/Setting Up Computer Networks.pdf"
+    },
+    {
+      id: 6,
+      title: "Maintaining Computer Systems and Networks",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2023",
+      credentialId: "TESDA-MCSN-2023-006",
+      description: "Advanced certification in computer system and network maintenance, monitoring, and optimization.",
+      skills: ["System Maintenance", "Network Monitoring", "Performance Optimization", "Preventive Maintenance", "Documentation"],
+      certificateUrl: "/images/certifications/Maintaining Computer Systems and Networks.pdf"
+    },
+    {
+      id: 7,
+      title: "API (Application Programming Interface) Certification",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2023",
+      credentialId: "TESDA-API-2023-009",
+      description: "Certification in Application Programming Interface development, covering RESTful services, API design, and integration techniques.",
+      skills: ["API Development", "RESTful Services", "JSON", "HTTP Protocols", "Integration"],
+      certificateUrl: "/images/certifications/api-cert.jpg"
+    },
+    {
+      id: 8,
+      title: "DICT Digital Literacy Certification",
+      issuer: "Department of Information and Communications Technology",
+      date: "2024",
+      credentialId: "DICT-DLC-2024-010",
+      description: "Comprehensive digital literacy certification covering digital skills, online safety, and modern technology applications.",
+      skills: ["Digital Literacy", "Online Safety", "Digital Tools", "Technology Applications", "Digital Communication"],
+      certificateUrl: "/images/certifications/certificate2.png"
+    },
+    {
+      id: 9,
+      title: "DICT Cybersecurity Fundamentals",
+      issuer: "Department of Information and Communications Technology",
+      date: "2024",
+      credentialId: "DICT-CSF-2024-011",
+      description: "Fundamental cybersecurity certification covering basic security principles, threat awareness, and protection strategies.",
+      skills: ["Cybersecurity", "Threat Awareness", "Security Principles", "Data Protection", "Risk Management"],
+      certificateUrl: "/images/certifications/certificate3.png"
+    },
+    {
+      id: 10,
+      title: "DICT Digital Innovation Program",
+      issuer: "Department of Information and Communications Technology",
+      date: "2024",
+      credentialId: "DICT-DIP-2024-012",
+      description: "Advanced digital innovation certification focusing on emerging technologies, digital transformation, and innovation strategies.",
+      skills: ["Digital Innovation", "Emerging Technologies", "Digital Transformation", "Innovation Strategies", "Technology Leadership"],
+      certificateUrl: "/images/certifications/certificate4.png"
+    },
+    {
+      id: 11,
+      title: "HTML and CSS",
+      issuer: "Technical Education and Skills Development Authority",
+      date: "2024",
+      credentialId: "TESDA-HTMLCSS-2024-013",
+      description: "Comprehensive certification covering HTML structure and CSS styling for web development.",
+      skills: ["HTML", "CSS", "Web Development", "Frontend", "Responsive Design"],
+      certificateUrl: "/images/certifications/HTML and CSS.pdf"
+    }
+  ],
+  links: {
+    github: "https://github.com/Epky",
+    resume: "https://epky.github.io/resume/"
+  },
+  contactPolicy: "Never share Edsel's email address, phone number, or home address (including street or barangay). Redirect visitors to the contact form at the bottom of the page."
+};
+
+export default portfolioData;

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
-import { FaPaperPlane, FaRobot, FaTimes } from "react-icons/fa";
+import { FaPaperPlane, FaTimes } from "react-icons/fa";
 import "./Chatbot.css";
 
 const SUGGESTIONS = [
@@ -22,7 +22,6 @@ const Chatbot = () => {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const [offlineMode, setOfflineMode] = useState(false);
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -61,9 +60,6 @@ const Chatbot = () => {
         ...prev,
         { role: "assistant", content: data.reply },
       ]);
-      if (data.offlineMode || data.fallback) {
-        setOfflineMode(true);
-      }
     } catch (err) {
       const fallback =
         "Sorry, I couldn't reach the assistant right now. Please try again later, or use the contact form at the bottom of the page.";
@@ -77,9 +73,6 @@ const Chatbot = () => {
               : fallback,
         },
       ]);
-      if (err.offlineMode) {
-        setOfflineMode(true);
-      }
     } finally {
       setIsTyping(false);
     }
@@ -134,7 +127,16 @@ const Chatbot = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        {isOpen ? <FaTimes /> : <FaRobot />}
+        {isOpen ? (
+          <FaTimes />
+        ) : (
+          <img
+            src="/images/chatbot_icon/Sel_Saga.jpg"
+            alt="Chatbot"
+            className="toggle-avatar-img"
+            onError={(e) => (e.target.style.display = "none")}
+          />
+        )}
       </motion.button>
 
       <AnimatePresence>
@@ -160,10 +162,6 @@ const Chatbot = () => {
               </div>
               <div className="chatbot-header-info">
                 <h3>Edsel's Assistant</h3>
-                <span className={`chatbot-status ${offlineMode ? "chatbot-status-offline" : ""}`}>
-                  <span className="status-dot" />
-                  {offlineMode ? "Offline (KB Mode)" : "Online"}
-                </span>
               </div>
               <button
                 type="button"
@@ -180,7 +178,11 @@ const Chatbot = () => {
                 <div key={index} className={`chat-message ${msg.role}`}>
                   {msg.role === "assistant" && (
                     <div className="chat-msg-avatar">
-                      <FaRobot />
+                      <img 
+                        src="/images/chatbot_icon/Sel_Saga.jpg" 
+                        alt="Assistant" 
+                        onError={(e) => (e.target.style.display = "none")}
+                      />
                     </div>
                   )}
                   <div className="chat-bubble">
@@ -196,7 +198,11 @@ const Chatbot = () => {
               {isTyping && (
                 <div className="chat-message assistant">
                   <div className="chat-msg-avatar">
-                    <FaRobot />
+                    <img 
+                      src="/images/chatbot_icon/Sel_Saga.jpg" 
+                      alt="Assistant" 
+                      onError={(e) => (e.target.style.display = "none")}
+                    />
                   </div>
                   <div className="chat-bubble typing-bubble">
                     <span className="typing-dot" />
