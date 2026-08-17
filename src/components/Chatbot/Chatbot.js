@@ -22,6 +22,7 @@ const Chatbot = () => {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
+  const [offlineMode, setOfflineMode] = useState(false);
   const bottomRef = useRef(null);
 
   useEffect(() => {
@@ -50,6 +51,9 @@ const Chatbot = () => {
         if (typeof data?.message === "string" && data.message.trim()) {
           err.userMessage = data.message.trim();
         }
+        if (data.offlineMode || data.fallback) {
+          err.offlineMode = true;
+        }
         throw err;
       }
 
@@ -57,6 +61,9 @@ const Chatbot = () => {
         ...prev,
         { role: "assistant", content: data.reply },
       ]);
+      if (data.offlineMode || data.fallback) {
+        setOfflineMode(true);
+      }
     } catch (err) {
       const fallback =
         "Sorry, I couldn't reach the assistant right now. Please try again later, or use the contact form at the bottom of the page.";
@@ -70,6 +77,9 @@ const Chatbot = () => {
               : fallback,
         },
       ]);
+      if (err.offlineMode) {
+        setOfflineMode(true);
+      }
     } finally {
       setIsTyping(false);
     }
@@ -150,9 +160,9 @@ const Chatbot = () => {
               </div>
               <div className="chatbot-header-info">
                 <h3>Edsel's Assistant</h3>
-                <span className="chatbot-status">
+                <span className={`chatbot-status ${offlineMode ? "chatbot-status-offline" : ""}`}>
                   <span className="status-dot" />
-                  Online
+                  {offlineMode ? "Offline (KB Mode)" : "Online"}
                 </span>
               </div>
               <button

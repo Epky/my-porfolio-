@@ -90,6 +90,16 @@
   font-size: 0.8rem;
 }
 
+.chatbot-status.chatbot-status-offline {
+  color: #ffaa00;
+}
+
+.chatbot-status.chatbot-status-offline .status-dot {
+  background: #ffaa00;
+  box-shadow: 0 0 8px rgba(255, 170, 0, 0.8);
+  animation: none;
+}
+
 .status-dot {
   width: 8px;
   height: 8px;

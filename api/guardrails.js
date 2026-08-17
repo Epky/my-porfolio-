@@ -1,5 +1,5 @@
 const ABUSE_SUBSTRINGS = [
-  "gago", "gaga", "gagu", "bobo", "boba", "tanga", "ulol", "tarantado",
+  "gago", "gaga", "gagu", "bobo", "boba", "tanga", "ulol", "tarantado", "tarandado",
   "hindot", "siraulo", "luko", "loka", "engot", "inutil", "hampaslupa",
   "demonyo", "yawa", "peste", "buang", "timawa", "manyak", "pervert",
   "putangina", "ptngina", "tangina",
