@@ -21,7 +21,6 @@ const RATE_LIMIT_MAX = 20;
 const requestLog = new Map();
 
 let cachedKb = null;
-let cachedKbAt = 0;
 
 const KB_ONLY_MODE = process.env.KB_ONLY_MODE === "true";
 
@@ -135,7 +134,6 @@ async function loadKnowledgeBase(req) {
     const contentType = res.headers.get("content-type") || "";
     if (res.ok && contentType.includes("application/json")) {
       cachedKb = await res.json();
-      cachedKbAt = Date.now();
       return cachedKb;
     }
     console.log(`[chat] KB fetch returned ${res.status} (${contentType}) for ${origin}`);
