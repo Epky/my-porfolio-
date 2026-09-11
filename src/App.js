@@ -12,6 +12,7 @@ import Certifications from './components/Certifications';
 import Contact from './components/Contact';
 
 // Lazy-load chatbot so it doesn't affect initial page load
+// eslint-disable-next-line no-unused-vars
 const Chatbot = lazy(() => import('./components/Chatbot/Chatbot'));
 
 function App() {
