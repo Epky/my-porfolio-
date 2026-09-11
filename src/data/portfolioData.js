@@ -145,6 +145,19 @@ const portfolioData = {
       github: "https://github.com/Epky/pabnors-resort",
       technologies: ["React", "JavaScript", "Tailwind CSS", "FastAPI", "Python", "PostgreSQL", "Docker Compose"],
       features: ["Booking System", "Real-Time Notifications", "Payment Verification", "AI Chatbot"]
+    },
+    {
+      id: 4,
+      title: "Digos Smart Community",
+      description: "A comprehensive community incident reporting and management system designed to connect citizens with city departments. Features precision mapping, AI-assisted verification, and real-time department analytics for rapid response.",
+      image: "/images/project/digos_smart.png",
+      github: "https://github.com/Epky/digos_smart",
+      technologies: ["React", "Tailwind CSS", "JavaScript", "Python (FastAPI)", "PostgreSQL", "Redis", "MinIO", "Docker", "Mapbox GL JS"],
+      features: [
+        "Citizen Reporting - Interactive map-based incident reporting, photo uploads, and real-time status tracking.",
+        "Coordinator Dashboard - Report verification, duplicate merging, and automated routing to appropriate departments.",
+        "Department Management - Actionable analytics, heatmap generation, resolution tracking, and resource allocation."
+      ]
     }
   ],
   certifications: [

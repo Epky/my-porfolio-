@@ -59,7 +59,9 @@ function App() {
         <Contact />
       </main>
       <Suspense fallback={null}>
+        {/* Chatbot temporarily hidden 
         <Chatbot />
+        */}
       </Suspense>
     </div>
   );
